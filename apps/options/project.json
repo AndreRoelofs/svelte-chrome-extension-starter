@@ -1,0 +1,86 @@
+{
+    "name": "options",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "apps/options/src",
+    "projectType": "application",
+    "tags": [],
+    "targets": {
+        "lint": {
+            "executor": "@nx/eslint:lint",
+            "options": {
+                "lintFilePatterns": ["apps/options/**/*.{ts,svelte,spec.ts}"]
+            }
+        },
+        "check": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "svelte-check",
+                "cwd": "apps/options"
+            }
+        },
+        "build": {
+            "executor": "@nx/vite:build",
+            "outputs": ["{options.outputPath}"],
+            "defaultConfiguration": "production",
+            "options": {
+                "outputPath": "dist/apps/options"
+            },
+            "configurations": {
+                "development": {
+                    "mode": "development"
+                },
+                "production": {
+                    "mode": "production"
+                }
+            }
+        },
+        "serve": {
+            "executor": "@nx/vite:dev-server",
+            "defaultConfiguration": "development",
+            "options": {
+                "buildTarget": "options:build"
+            },
+            "configurations": {
+                "development": {
+                    "buildTarget": "options:build:development",
+                    "hmr": true
+                },
+                "production": {
+                    "buildTarget": "options:build:production",
+                    "hmr": false
+                }
+            }
+        },
+        "preview": {
+            "dependsOn": ["build"],
+            "executor": "@nx/vite:preview-server",
+            "defaultConfiguration": "development",
+            "options": {
+                "buildTarget": "options:build"
+            },
+            "configurations": {
+                "development": {
+                    "buildTarget": "options:build:development"
+                },
+                "production": {
+                    "buildTarget": "options:build:production"
+                }
+            }
+        },
+        "test": {
+            "executor": "@nx/vite:test",
+            "outputs": ["{options.reportsDirectory}"],
+            "options": {
+                "reportsDirectory": "../../coverage/apps/options"
+            }
+        },
+        "serve-static": {
+            "executor": "@nx/web:file-server",
+            "dependsOn": ["build"],
+            "options": {
+                "buildTarget": "options:build",
+                "spa": true
+            }
+        }
+    }
+}
