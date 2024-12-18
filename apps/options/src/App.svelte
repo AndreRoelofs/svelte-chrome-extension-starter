@@ -1,14 +1,16 @@
-<script lang="ts">
-	// export let name: string;
-</script>
+<!-- <script lang="ts">
+</script> -->
 
 <main>
-	<!-- <h1>Welcome {name}!</h1> -->
 	<h1>Welcome test!</h1>
 	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
 </main>
+<!-- 
+<div id="app">
+    <h2>Hello World!</h2>
+</div> -->
 
-<style>
+<!-- <style>
 	main {
 		text-align: center;
 		padding: 1em;
@@ -28,4 +30,4 @@
 			max-width: none;
 		}
 	}
-</style>
+</style> -->
