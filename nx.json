@@ -59,5 +59,24 @@
             "inputs": ["production", "^production"]
         }
     },
-    "plugins": ["@nxext/svelte"]
+    "plugins": [
+        "@nxext/svelte",
+        {
+            "plugin": "@nx/vite/plugin",
+            "options": {
+                "buildTargetName": "vite:build",
+                "testTargetName": "vite:test",
+                "serveTargetName": "vite:serve",
+                "previewTargetName": "vite:preview",
+                "serveStaticTargetName": "vite:serve-static",
+                "typecheckTargetName": "typecheck"
+            }
+        },
+        {
+            "plugin": "@nx/eslint/plugin",
+            "options": {
+                "targetName": "eslint:lint"
+            }
+        }
+    ]
 }

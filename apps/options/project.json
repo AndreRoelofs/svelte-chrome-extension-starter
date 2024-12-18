@@ -23,7 +23,7 @@
             "outputs": ["{options.outputPath}"],
             "defaultConfiguration": "production",
             "options": {
-                "outputPath": "dist/apps/options"
+                "outputPath": "extension/pages/options"
             },
             "configurations": {
                 "development": {

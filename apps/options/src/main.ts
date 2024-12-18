@@ -1,10 +1,12 @@
-import App from './App.svelte';
+// import App from './App.svelte';
 
-const app = new App({
-    target: document.body,
-    props: {
-        name: 'options',
-    },
-});
+// const app = new App({
+//     target: document.body,
+//     props: {
+//         name: 'options',
+//     },
+// });
 
-export default app;
+// export default app;
+
+console.log('test')

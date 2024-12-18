@@ -42,3 +42,9 @@ Thumbs.db
 .nx/workspace-data
 
 vite.config.*.timestamp*
+
+extension/pages/*
+!extension/pages/.gitkeep
+
+extension/scripts/*
+!extension/scripts/.gitkeep

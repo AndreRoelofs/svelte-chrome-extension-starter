@@ -3,7 +3,11 @@
     "compilerOptions": {
         "rootDir": ".",
         "baseUrl": ".",
-        "paths": {},
+        "paths": {
+            "@svelte-chrome-extension-starter/background": [
+                "apps/scripts/background/src/index.ts"
+            ]
+        },
         "allowJs": false,
         "allowSyntheticDefaultImports": true,
         "composite": true,
@@ -32,7 +36,7 @@
         "skipLibCheck": true,
         "sourceMap": false,
         "strict": true,
-        "target": "es2022",
+        "target": "ES2015",
         "verbatimModuleSyntax": false
     },
     "exclude": ["node_modules", "tmp"]
