@@ -77,6 +77,15 @@
             "options": {
                 "targetName": "eslint:lint"
             }
+        },
+        {
+            "plugin": "@nx/cypress/plugin",
+            "options": {
+                "targetName": "cypress:e2e",
+                "openTargetName": "open-cypress",
+                "componentTestingTargetName": "component-test",
+                "ciTargetName": "e2e-ci"
+            }
         }
     ]
 }
