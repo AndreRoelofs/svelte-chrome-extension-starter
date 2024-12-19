@@ -1,0 +1,91 @@
+{
+    "name": "devtools-panel",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "apps/devtools-panel/src",
+    "projectType": "application",
+    "tags": [],
+    "targets": {
+        "lint": {
+            "command": "eslint apps/devtools-panel/**/*.{ts,svelte,spec.ts}"
+        },
+        "check": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "svelte-check",
+                "cwd": "apps/devtools-panel"
+            }
+        },
+        "build": {
+            "executor": "@nx/vite:build",
+            "outputs": [
+                "{options.outputPath}"
+            ],
+            "defaultConfiguration": "production",
+            "options": {
+                "outputPath": "extension/pages/devtools-panel"
+            },
+            "configurations": {
+                "development": {
+                    "mode": "development"
+                },
+                "production": {
+                    "mode": "production"
+                }
+            }
+        },
+        "serve": {
+            "executor": "@nx/vite:dev-server",
+            "defaultConfiguration": "development",
+            "options": {
+                "buildTarget": "devtools-panel:build"
+            },
+            "configurations": {
+                "development": {
+                    "buildTarget": "devtools-panel:build:development",
+                    "hmr": true
+                },
+                "production": {
+                    "buildTarget": "devtools-panel:build:production",
+                    "hmr": false
+                }
+            }
+        },
+        "preview": {
+            "dependsOn": [
+                "build"
+            ],
+            "executor": "@nx/vite:preview-server",
+            "defaultConfiguration": "development",
+            "options": {
+                "buildTarget": "devtools-panel:build"
+            },
+            "configurations": {
+                "development": {
+                    "buildTarget": "devtools-panel:build:development"
+                },
+                "production": {
+                    "buildTarget": "devtools-panel:build:production"
+                }
+            }
+        },
+        "test": {
+            "executor": "@nx/vite:test",
+            "outputs": [
+                "{devtools-panel.reportsDirectory}"
+            ],
+            "options": {
+                "reportsDirectory": "../../coverage/apps/devtools-panel"
+            }
+        },
+        "serve-static": {
+            "executor": "@nx/web:file-server",
+            "dependsOn": [
+                "build"
+            ],
+            "options": {
+                "buildTarget": "devtools-panel:build",
+                "spa": true
+            }
+        }
+    }
+}
