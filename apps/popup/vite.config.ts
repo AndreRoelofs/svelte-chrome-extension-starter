@@ -7,6 +7,7 @@ import { nxCopyAssetsPlugin } from '@nx/vite/plugins/nx-copy-assets.plugin';
 import { join } from 'path';
 
 export default defineConfig({
+    base: './',
     root: __dirname,
     cacheDir: '../../node_modules/.vite/apps/popup',
     server: {
