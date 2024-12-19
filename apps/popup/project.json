@@ -1,0 +1,96 @@
+{
+    "name": "popup",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "apps/popup/src",
+    "projectType": "application",
+    "tags": [],
+    "targets": {
+        "lint": {
+            "executor": "@nx/eslint:lint",
+            "options": {
+                "lintFilePatterns": [
+                    "apps/popup/**/*.{ts,svelte,spec.ts}"
+                ]
+            }
+        },
+        "check": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "svelte-check",
+                "cwd": "apps/popup"
+            }
+        },
+        "build": {
+            "executor": "@nx/vite:build",
+            "outputs": [
+                "{options.outputPath}"
+            ],
+            "defaultConfiguration": "production",
+            "options": {
+                "outputPath": "extension/pages/popup"
+            },
+            "configurations": {
+                "development": {
+                    "mode": "development"
+                },
+                "production": {
+                    "mode": "production"
+                }
+            }
+        },
+        "serve": {
+            "executor": "@nx/vite:dev-server",
+            "defaultConfiguration": "development",
+            "options": {
+                "buildTarget": "popup:build"
+            },
+            "configurations": {
+                "development": {
+                    "buildTarget": "popup:build:development",
+                    "hmr": true
+                },
+                "production": {
+                    "buildTarget": "popup:build:production",
+                    "hmr": false
+                }
+            }
+        },
+        "preview": {
+            "dependsOn": [
+                "build"
+            ],
+            "executor": "@nx/vite:preview-server",
+            "defaultConfiguration": "development",
+            "options": {
+                "buildTarget": "popup:build"
+            },
+            "configurations": {
+                "development": {
+                    "buildTarget": "popup:build:development"
+                },
+                "production": {
+                    "buildTarget": "popup:build:production"
+                }
+            }
+        },
+        "test": {
+            "executor": "@nx/vite:test",
+            "outputs": [
+                "{popup.reportsDirectory}"
+            ],
+            "options": {
+                "reportsDirectory": "../../coverage/apps/popup"
+            }
+        },
+        "serve-static": {
+            "executor": "@nx/web:file-server",
+            "dependsOn": [
+                "build"
+            ],
+            "options": {
+                "buildTarget": "popup:build",
+                "spa": true
+            }
+        }
+    }
+}
