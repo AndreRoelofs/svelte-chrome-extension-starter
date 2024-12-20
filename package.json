@@ -2,11 +2,15 @@
     "name": "@svelte-chrome-extension-starter/source",
     "version": "0.0.0",
     "license": "MIT",
-    "scripts": {},
+    "scripts": {
+        "lint": "nx run-many --target=lint --all",
+        "lint:fix": "nx run-many --target=lint --all --fix"
+    },
     "private": true,
     "type": "module",
     "dependencies": {
-        "empty": "0.10.1"
+        "empty": "0.10.1",
+        "eslint-plugin-svelte": "^2.46.1"
     },
     "devDependencies": {
         "@nx/cypress": "20.2.2",
@@ -37,7 +41,6 @@
         "eslint": "~8.57.0",
         "eslint-config-prettier": "^9.0.0",
         "eslint-plugin-cypress": "^4.1.0",
-        "eslint-plugin-svelte3": "^4.0.0",
         "jest": "^29.7.0",
         "jsdom": "~22.1.0",
         "nx": "20.2.2",

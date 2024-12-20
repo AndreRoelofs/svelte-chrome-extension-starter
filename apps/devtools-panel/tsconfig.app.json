@@ -8,7 +8,7 @@
         "isolatedModules": true,
         "sourceMap": true,
         "types": ["svelte", "node", "vite/client"],
-        "strict": false,
+        "strict": true,
         "esModuleInterop": true,
         "skipLibCheck": true,
         "forceConsistentCasingInFileNames": true,
