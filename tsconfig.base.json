@@ -6,6 +6,9 @@
         "paths": {
             "@svelte-chrome-extension-starter/background": [
                 "apps/scripts/background/src/index.ts"
+            ],
+            "@svelte-chrome-extension-starter/content": [
+                "apps/scripts/content/src/index.ts"
             ]
         },
         "allowJs": false,
