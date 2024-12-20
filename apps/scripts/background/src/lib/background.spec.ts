@@ -1,4 +1,4 @@
-import { background } from './lib/background.ts';
+import { background } from './background.ts';
 
 describe('background', () => {
     it('should work', () => {

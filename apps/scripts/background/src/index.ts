@@ -1,9 +1,1 @@
-function background(): string {
-    return 'background';
-}
-
-function printBackground(): void {
-    console.log(background());
-}
-
-printBackground();
+export * from './lib/background.ts';
