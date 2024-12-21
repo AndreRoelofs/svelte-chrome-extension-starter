@@ -9,7 +9,8 @@
             ],
             "@svelte-chrome-extension-starter/content": [
                 "apps/scripts/content/src/index.ts"
-            ]
+            ],
+            "@svelte-chrome-extension-starter/ui-styles": ["libs/ui-styles/src"]
         },
         "allowJs": false,
         "allowSyntheticDefaultImports": true,
