@@ -1,47 +1,60 @@
 {
-    "compileOnSave": false,
-    "compilerOptions": {
-        "rootDir": ".",
-        "baseUrl": ".",
-        "paths": {
-            "@svelte-chrome-extension-starter/background": [
-                "apps/scripts/background/src/index.ts"
-            ],
-            "@svelte-chrome-extension-starter/content": [
-                "apps/scripts/content/src/index.ts"
-            ],
-            "@svelte-chrome-extension-starter/ui-styles": ["libs/ui-styles/src"]
-        },
-        "allowJs": false,
-        "allowSyntheticDefaultImports": true,
-        "composite": true,
-        "declaration": true,
-        "declarationMap": true,
-        "emitDeclarationOnly": true,
-        "emitDecoratorMetadata": false,
-        "esModuleInterop": true,
-        "experimentalDecorators": false,
-        "forceConsistentCasingInFileNames": true,
-        "importHelpers": true,
-        "incremental": true,
-        "isolatedModules": true,
-        "lib": ["es2022"],
-        "module": "NodeNext",
-        "moduleResolution": "NodeNext",
-        "noEmitOnError": true,
-        "noFallthroughCasesInSwitch": true,
-        "noImplicitOverride": true,
-        "noImplicitReturns": true,
-        "noUnusedLocals": true,
-        "pretty": true,
-        "removeComments": false,
-        "resolveJsonModule": false,
-        "skipDefaultLibCheck": false,
-        "skipLibCheck": true,
-        "sourceMap": false,
-        "strict": true,
-        "target": "ES2015",
-        "verbatimModuleSyntax": false
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "baseUrl": ".",
+    "paths": {
+      "$lib": [
+        "libs/ui-styles/src/ui"
+      ],
+      "$lib/*": [
+        "libs/ui-styles/src/ui/*"
+      ],
+      "@svelte-chrome-extension-starter/background": [
+        "apps/scripts/background/src/index.ts"
+      ],
+      "@svelte-chrome-extension-starter/content": [
+        "apps/scripts/content/src/index.ts"
+      ],
+      "@svelte-chrome-extension-starter/ui-styles": [
+        "libs/libs/ui-styles/src/index.ts"
+      ]
     },
-    "exclude": ["node_modules", "tmp"]
+    "allowJs": false,
+    "allowSyntheticDefaultImports": true,
+    "composite": true,
+    "declaration": true,
+    "declarationMap": true,
+    "emitDeclarationOnly": true,
+    "emitDecoratorMetadata": false,
+    "esModuleInterop": true,
+    "experimentalDecorators": false,
+    "forceConsistentCasingInFileNames": true,
+    "importHelpers": true,
+    "incremental": true,
+    "isolatedModules": true,
+    "lib": [
+      "es2022"
+    ],
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "noEmitOnError": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "pretty": true,
+    "removeComments": false,
+    "resolveJsonModule": false,
+    "skipDefaultLibCheck": false,
+    "skipLibCheck": true,
+    "sourceMap": false,
+    "strict": true,
+    "target": "ES2015",
+    "verbatimModuleSyntax": false
+  },
+  "exclude": [
+    "node_modules",
+    "tmp"
+  ]
 }

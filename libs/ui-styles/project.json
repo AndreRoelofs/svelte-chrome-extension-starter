@@ -1,9 +1,19 @@
 {
-    "name": "ui-styles",
-    "$schema": "../../node_modules/nx/schemas/project-schema.json",
-    "sourceRoot": "libs/ui-styles/src",
-    "projectType": "library",
-    "tags": [],
-    "// targets": "to see all targets run: nx show project ui-styles --web",
-    "targets": {}
+  "name": "ui-styles",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/ui-styles/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "command": "eslint libs/ui-styles/**/*.{ts,svelte,spec.ts}"
+    },
+    "check": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "svelte-check",
+        "cwd": "libs/ui-styles"
+      }
+    }
+  }
 }

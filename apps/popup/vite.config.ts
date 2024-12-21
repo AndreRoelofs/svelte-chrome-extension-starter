@@ -4,7 +4,9 @@ import { svelte } from '@sveltejs/vite-plugin-svelte';
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 import { nxCopyAssetsPlugin } from '@nx/vite/plugins/nx-copy-assets.plugin';
 
-import { join } from 'path';
+// import { join, resolve } from 'path';
+
+import path from 'path';
 
 export default defineConfig({
     base: './',
@@ -25,7 +27,7 @@ export default defineConfig({
     // },
     build: {
         // outDir: '../../dist/apps/popup',
-        outDir: join(__dirname, '../../extension/pages/popup'),
+        outDir: path.join(__dirname, '../../extension/pages/popup'),
         emptyOutDir: true,
         reportCompressedSize: true,
         commonjsOptions: {
@@ -41,6 +43,11 @@ export default defineConfig({
         coverage: {
             reportsDirectory: '../../coverage/apps/popup',
             provider: 'v8',
+        },
+    },
+    resolve: {
+        alias: {
+            $lib: path.resolve('libs/ui-styles/src/ui'),
         },
     },
 });
