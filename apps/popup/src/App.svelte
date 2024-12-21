@@ -36,7 +36,7 @@
 </script>
 
 <main class="flex flex-col items-center justify-center h-screen bg-gray-100 text-center">
-    <Button variant='destructive'>Click Me</Button>
+    <Button>Click Me</Button>
   <h1 class="text-4xl font-bold text-blue-600">{message}</h1>
   <p class="mt-4 text-lg text-gray-700">
     TailwindCSS is correctly installed and working!
