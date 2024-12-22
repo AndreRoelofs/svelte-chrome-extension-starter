@@ -2,7 +2,7 @@
     "extends": "../../../tsconfig.base.json",
     "compilerOptions": {
         "noPropertyAccessFromIndexSignature": true,
-        "allowImportingTsExtensions": true,
+        "allowImportingTsExtensions": true
     },
     "files": [],
     "include": [],

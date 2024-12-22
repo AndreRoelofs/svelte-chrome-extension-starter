@@ -14,7 +14,7 @@
         "forceConsistentCasingInFileNames": true,
         "checkJs": true,
         "allowJs": true,
-        "resolveJsonModule": true,
+        "resolveJsonModule": true
     },
     "files": [],
     "include": [],

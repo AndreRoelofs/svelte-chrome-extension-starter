@@ -10,12 +10,8 @@
     "content_scripts": [
         {
             "all_frames": false,
-            "js": [
-                "scripts/content/main.js"
-            ],
-            "matches": [
-                "<all_urls>"
-            ],
+            "js": ["scripts/content/main.js"],
+            "matches": ["<all_urls>"],
             "run_at": "document_start"
         }
     ],
@@ -31,10 +27,6 @@
     },
     "devtools_page": "devtools.html",
     "options_page": "pages/options/index.html",
-    "permissions": [
-        "tabs"
-    ],
-    "host_permissions": [
-        "<all_urls>"
-    ]
+    "permissions": ["tabs"],
+    "host_permissions": ["<all_urls>"]
 }

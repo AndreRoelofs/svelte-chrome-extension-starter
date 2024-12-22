@@ -17,9 +17,7 @@
         },
         "build": {
             "executor": "@nx/vite:build",
-            "outputs": [
-                "{options.outputPath}"
-            ],
+            "outputs": ["{options.outputPath}"],
             "defaultConfiguration": "production",
             "options": {
                 "outputPath": "extension/pages/devtools-panel"
@@ -51,9 +49,7 @@
             }
         },
         "preview": {
-            "dependsOn": [
-                "build"
-            ],
+            "dependsOn": ["build"],
             "executor": "@nx/vite:preview-server",
             "defaultConfiguration": "development",
             "options": {
@@ -70,18 +66,14 @@
         },
         "test": {
             "executor": "@nx/vite:test",
-            "outputs": [
-                "{devtools-panel.reportsDirectory}"
-            ],
+            "outputs": ["{devtools-panel.reportsDirectory}"],
             "options": {
                 "reportsDirectory": "../../coverage/apps/devtools-panel"
             }
         },
         "serve-static": {
             "executor": "@nx/web:file-server",
-            "dependsOn": [
-                "build"
-            ],
+            "dependsOn": ["build"],
             "options": {
                 "buildTarget": "devtools-panel:build",
                 "spa": true

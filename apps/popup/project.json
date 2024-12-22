@@ -8,9 +8,7 @@
         "lint": {
             "executor": "@nx/eslint:lint",
             "options": {
-                "lintFilePatterns": [
-                    "apps/popup/**/*.{ts,svelte,spec.ts}"
-                ]
+                "lintFilePatterns": ["apps/popup/**/*.{ts,svelte,spec.ts}"]
             }
         },
         "check": {
@@ -22,9 +20,7 @@
         },
         "build": {
             "executor": "@nx/vite:build",
-            "outputs": [
-                "{options.outputPath}"
-            ],
+            "outputs": ["{options.outputPath}"],
             "defaultConfiguration": "production",
             "options": {
                 "outputPath": "extension/pages/popup"
@@ -56,9 +52,7 @@
             }
         },
         "preview": {
-            "dependsOn": [
-                "build"
-            ],
+            "dependsOn": ["build"],
             "executor": "@nx/vite:preview-server",
             "defaultConfiguration": "development",
             "options": {
@@ -75,18 +69,14 @@
         },
         "test": {
             "executor": "@nx/vite:test",
-            "outputs": [
-                "{popup.reportsDirectory}"
-            ],
+            "outputs": ["{popup.reportsDirectory}"],
             "options": {
                 "reportsDirectory": "../../coverage/apps/popup"
             }
         },
         "serve-static": {
             "executor": "@nx/web:file-server",
-            "dependsOn": [
-                "build"
-            ],
+            "dependsOn": ["build"],
             "options": {
                 "buildTarget": "popup:build",
                 "spa": true
