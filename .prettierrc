@@ -2,6 +2,11 @@
     "singleQuote": true,
     "tabWidth": 4,
     "plugins": [
+        "prettier-plugin-svelte",
         "prettier-plugin-tailwindcss"
-    ]
+    ],
+    "svelteBracketNewLine": false,
+    "svelteStrictMode": true,
+    "svelteAllowShorthand": false,
+    "svelteIndentScriptAndStyle": false
 }

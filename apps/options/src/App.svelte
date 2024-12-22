@@ -1,10 +1,13 @@
 <script lang="ts">
-    let name = "World";
+let name = 'World';
 </script>
 
 <main>
-	<h1>Welcome {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+    <h1>Welcome {name}!</h1>
+    <p>
+        Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn
+        how to build Svelte apps.
+    </p>
 </main>
 <!-- 
 <div id="app">

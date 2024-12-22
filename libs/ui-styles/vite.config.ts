@@ -3,6 +3,10 @@ import { svelte } from '@sveltejs/vite-plugin-svelte';
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 import { nxCopyAssetsPlugin } from '@nx/vite/plugins/nx-copy-assets.plugin';
 
+import dts from 'vite-plugin-dts';
+
+import path from 'path';
+
 export default defineConfig({
     root: __dirname,
     cacheDir: '../../node_modules/.vite/libs/ui-styles',
@@ -14,7 +18,15 @@ export default defineConfig({
         port: 4300,
         host: 'localhost',
     },
-    plugins: [svelte()],
+    plugins: [
+        svelte(),
+        nxViteTsPaths(),
+        nxCopyAssetsPlugin(['*.md']),
+        dts({
+            entryRoot: 'src',
+            tsconfigPath: path.join(__dirname, 'tsconfig.lib.json'),
+        }),
+    ],
     // Uncomment this if you are using workers.
     // worker: {
     //  plugins: [ nxViteTsPaths() ],
