@@ -1,4 +1,4 @@
-const fontFamily = require('tailwindcss/defaultTheme').fontFamily;
+import { fontFamily } from 'tailwindcss/defaultTheme';
 
 /** @type {import('tailwindcss').Config}*/
 const config = {
@@ -98,7 +98,12 @@ const config = {
         },
     },
 
-    plugins: [],
+    plugins: [
+        require('tailwindcss-animate'),
+        require('@tailwindcss/typography'),
+        require('@tailwindcss/forms'),
+        require('@tailwindcss/container-queries'),
+    ],
 };
 
 module.exports = config;

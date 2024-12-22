@@ -34,12 +34,6 @@ function testFunction() {
 </script>
 
 <main>
-    <!-- <Input
-        placeholder="Enter a snippet"
-        bind:value={snippet}
-        on:keydown={(e) => e.key === 'Enter' && addSnippet()}
-    />
-    <Button on:click={addSnippet}>Add</Button> -->
     <div class="min-w-[200px] p-4 text-gray-900">
         <h1 class="mb-2 text-lg font-semibold">Quick Snippet Manager</h1>
         <div class="mb-4 flex items-center gap-2">
