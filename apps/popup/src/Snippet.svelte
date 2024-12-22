@@ -14,6 +14,7 @@ onMount(async () => {
 
 // Add a new snippet and store in chrome.storage
 async function addSnippet() {
+    console.log('snippet', snippet);
     if (!snippet.trim()) return;
     snippets = [...snippets, snippet.trim()];
 
@@ -26,6 +27,10 @@ async function copySnippet(text) {
     await navigator.clipboard.writeText(text);
     alert('Snippet copied to clipboard!');
 }
+
+function testFunction() {
+    console.log('testFunction');
+}
 </script>
 
 <main>
@@ -36,15 +41,15 @@ async function copySnippet(text) {
     />
     <Button on:click={addSnippet}>Add</Button> -->
     <div class="min-w-[200px] p-4 text-gray-900">
-        <h1 class="mb-2 text-lg font-semibold">Quickk Snippet Manager</h1>
-
+        <h1 class="mb-2 text-lg font-semibold">Quick Snippet Manager</h1>
         <div class="mb-4 flex items-center gap-2">
             <Input
                 placeholder="Enter a snippet"
                 bind:value={snippet}
                 on:keydown={(e) => e.key === 'Enter' && addSnippet()}
             />
-            <Button on:click={addSnippet}>Add</Button>
+            <!-- <Button on:click={addSnippet}>Add</Button> -->
+            <Button onclick={addSnippet}>Add</Button>
         </div>
 
         {#if snippets.length > 0}

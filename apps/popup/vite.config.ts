@@ -9,7 +9,7 @@ import { nxCopyAssetsPlugin } from '@nx/vite/plugins/nx-copy-assets.plugin';
 import path from 'path';
 
 export default defineConfig({
-    // base: './',
+    base: './',
     root: __dirname,
     cacheDir: '../../node_modules/.vite/apps/popup',
     server: {
