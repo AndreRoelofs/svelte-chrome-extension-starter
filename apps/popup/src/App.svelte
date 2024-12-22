@@ -24,6 +24,12 @@ onMount(() => {
         console.log('Value currently is ' + result.key);
     });
 });
+
+const bookmarks = [
+    { title: 'Video 1', timestamp: '5:49', date: '2024/12/22' },
+    { title: 'Video 2', timestamp: '10:49', date: '2024/12/22' },
+    { title: 'Video 3', timestamp: '15:49', date: '2024/12/22' },
+];
 </script>
 
 <!-- 
@@ -34,28 +40,30 @@ onMount(() => {
     <article class="prose lg:prose-xl">
         <h1>The Bookmarker</h1>
         <p>A simple app that makes it to bookmark your videos.</p>
-        <Table.Root>
-            <Table.Caption>A list of your bookmarks.</Table.Caption>
-            <Table.Header>
+    </article>
+    <Table.Root>
+        <Table.Caption>A list of your bookmarks.</Table.Caption>
+        <Table.Header>
+            <Table.Row>
+                <Table.Head class="w-[100px]">Title</Table.Head>
+                <Table.Head>Timestamp</Table.Head>
+                <Table.Head>Date</Table.Head>
+                <Table.Head class="text-right">Actions</Table.Head>
+            </Table.Row>
+        </Table.Header>
+        <Table.Body>
+            {#each bookmarks as row}
                 <Table.Row>
-                    <Table.Head class="w-[100px]">Title</Table.Head>
-                    <Table.Head>Timestamp</Table.Head>
-                    <Table.Head>Date</Table.Head>
-                    <Table.Head class="text-right">Actions</Table.Head>
-                </Table.Row>
-            </Table.Header>
-            <Table.Body>
-                <Table.Row>
-                    <Table.Cell class="font-medium">Video 1</Table.Cell>
-                    <Table.Cell>5:49</Table.Cell>
-                    <Table.Cell>2024/12/22</Table.Cell>
+                    <Table.Cell class="font-medium">{row.title}</Table.Cell>
+                    <Table.Cell>{row.timestamp}</Table.Cell>
+                    <Table.Cell>{row.date}</Table.Cell>
                     <Table.Cell class="text-right"
                         ><Button>Play</Button></Table.Cell
                     >
                 </Table.Row>
-            </Table.Body>
-        </Table.Root>
-    </article>
+            {/each}
+        </Table.Body>
+    </Table.Root>
 </main>
 
 <style>
