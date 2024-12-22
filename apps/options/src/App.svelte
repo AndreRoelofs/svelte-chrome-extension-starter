@@ -1,37 +1,57 @@
-<script lang="ts">
-let name = 'World';
+<script>
+import { onMount } from 'svelte';
+
+// Default options
+let options = {
+    sortOrder: 'date', // or 'alphabetical'
+};
+
+// Load current options from chrome.storage
+onMount(async () => {
+    const stored = await chrome.storage.local.get('options');
+    if (stored.options) {
+        options = stored.options;
+    }
+});
+
+// Save options back to chrome.storage
+async function saveOptions() {
+    await chrome.storage.local.set({ options });
+}
+
+// Update the sort order on user interaction
+function setSortOrder(order) {
+    options.sortOrder = order;
+    saveOptions();
+}
 </script>
 
-<main>
-    <h1>Welcome {name}!</h1>
-    <p>
-        Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn
-        how to build Svelte apps.
-    </p>
-</main>
-<!-- 
-<div id="app">
-    <h2>Hello World!</h2>
-</div> -->
+<div class="space-y-4 p-4 text-gray-900 dark:text-white">
+    <h1 class="text-xl font-semibold">Extension Options</h1>
 
-<!-- <style>
-	main {
-		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
-	}
-
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
-	}
-
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
-	}
-</style> -->
+    <div>
+        <label class="mb-2 block font-medium">Snippet Sort Order:</label>
+        <div class="flex items-center gap-4">
+            <label class="flex items-center gap-1">
+                <input
+                    type="radio"
+                    name="sortOrder"
+                    value="date"
+                    checked={options.sortOrder === 'date'}
+                    on:change={() => setSortOrder('date')}
+                />
+                By Date
+            </label>
+            <label class="flex items-center gap-1">
+                <input
+                    type="radio"
+                    name="sortOrder"
+                    value="alphabetical"
+                    checked={options.sortOrder === 'alphabetical'}
+                    on:change={() => setSortOrder('alphabetical')}
+                />
+                Alphabetical
+            </label>
+        </div>
+    </div>
+</div>
