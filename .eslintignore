@@ -1,6 +1,5 @@
 node_modules
 .DS_Store
-node_modules
 /build
 /.svelte-kit
 /package
@@ -12,3 +11,10 @@ node_modules
 pnpm-lock.yaml
 package-lock.json
 yarn.lock
+
+.nx
+.yarn
+dist
+extension/pages/*
+extension/scripts/*
+node_modules

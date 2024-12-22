@@ -3,3 +3,9 @@
 /coverage
 /.nx/cache
 /.nx/workspace-data
+
+.yarn
+/extension/pages/*
+/extension/scripts/*
+node_modules
+yarn.lock
