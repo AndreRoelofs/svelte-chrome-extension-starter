@@ -1,5 +1,5 @@
 /// <reference types='vitest' />
-import { defineConfig } from 'vite';
+import { defineConfig, searchForWorkspaceRoot } from 'vite';
 import { svelte } from '@sveltejs/vite-plugin-svelte';
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 import { nxCopyAssetsPlugin } from '@nx/vite/plugins/nx-copy-assets.plugin';
@@ -9,12 +9,17 @@ import { nxCopyAssetsPlugin } from '@nx/vite/plugins/nx-copy-assets.plugin';
 import path from 'path';
 
 export default defineConfig({
-    base: './',
+    // base: './',
     root: __dirname,
     cacheDir: '../../node_modules/.vite/apps/popup',
     server: {
         port: 4200,
         host: 'localhost',
+        fs: {
+            strict: true,
+            // allow: [searchForWorkspaceRoot(process.cwd())],
+            allow: [searchForWorkspaceRoot(__dirname)],
+        },
     },
     preview: {
         port: 4300,

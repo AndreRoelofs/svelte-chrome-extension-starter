@@ -34,7 +34,7 @@
         "@tailwindcss/typography": "^0.5.15",
         "@testing-library/svelte": "^5.2.2",
         "@tsconfig/svelte": "^5.0.0",
-        "@types/chrome": "^0.0.243",
+        "@types/chrome": "^0.0.287",
         "@types/node": "^22.10.2",
         "@typescript-eslint/eslint-plugin": "^7.16.0",
         "@typescript-eslint/parser": "^7.16.0",
