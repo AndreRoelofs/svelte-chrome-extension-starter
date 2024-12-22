@@ -3,6 +3,7 @@
     "version": "0.0.1",
     "license": "MIT",
     "scripts": {
+        "dev:content": "nx run content:build:development --watch",
         "dev:popup": "nx run popup:build:development --watch",
         "dev:options": "nx run options:build:development --watch",
         "dev:devtools-panel": "nx run devtools-panel:build:development --watch",

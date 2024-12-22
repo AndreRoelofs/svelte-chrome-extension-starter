@@ -1,1 +1,2 @@
-export * from './lib/content.ts';
+import './lib/content.css';
+import './lib/content';

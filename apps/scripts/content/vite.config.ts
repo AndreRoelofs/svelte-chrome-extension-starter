@@ -4,11 +4,13 @@ import dts from 'vite-plugin-dts';
 import * as path from 'path';
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 import { nxCopyAssetsPlugin } from '@nx/vite/plugins/nx-copy-assets.plugin';
+import { svelte } from '@sveltejs/vite-plugin-svelte';
 
 export default defineConfig({
     root: __dirname,
     cacheDir: '../../../node_modules/.vite/apps/scripts/content',
     plugins: [
+        svelte(),
         nxViteTsPaths(),
         nxCopyAssetsPlugin(['*.md']),
         dts({
@@ -41,6 +43,11 @@ export default defineConfig({
         rollupOptions: {
             // External packages that should not be bundled into your library.
             external: [],
+            output: {
+                entryFileNames: 'main.js',
+                chunkFileNames: 'main-[name].js',
+                assetFileNames: 'assets/[name].[ext]',
+            },
         },
     },
     test: {
