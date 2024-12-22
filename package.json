@@ -4,6 +4,7 @@
     "license": "MIT",
     "scripts": {
         "dev:popup": "nx run popup:build:development --watch",
+        "dev:options": "nx run options:build:development --watch",
         "build:all": "nx run-many --target=build --all",
         "lint": "nx run-many --target=lint --all",
         "lint:fix": "nx run-many --target=lint --all --fix",
