@@ -3,6 +3,8 @@
     "version": "0.0.1",
     "license": "MIT",
     "scripts": {
+        "dev:popup": "nx run popup:build:development --watch",
+        "build:all": "nx run-many --target=build --all",
         "lint": "nx run-many --target=lint --all",
         "lint:fix": "nx run-many --target=lint --all --fix",
         "pretty": "prettier --write \"./**/*.{js,jsx,mjs,cjs,ts,tsx,json}\""
