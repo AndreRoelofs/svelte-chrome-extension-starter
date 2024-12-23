@@ -13,21 +13,35 @@
             "js": [
                 "scripts/content/main.js"
             ],
+            "css": [
+                "scripts/content/assets/style.css"
+            ],
             "matches": [
                 "<all_urls>"
             ],
-            "run_at": "document_start"
+            "run_at": "document_end"
         }
     ],
     "action": {
-        "default_icon": "images/icon-128x128.png",
-        "default_popup": "pages/popup/index.html"
+        "default_icon": "icons/icon-128x128.png",
+        "default_popup": "pages/popup/index.html",
+        "default_title": "Svelte Chrome Extension Starter"
     },
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "scripts/content/assets/*"
+            ],
+            "matches": [
+                "<all_urls>"
+            ]
+        }
+    ],
     "icons": {
-        "16": "images/icon-16x16.png",
-        "32": "images/icon-32x32.png",
-        "48": "images/icon-48x48.png",
-        "128": "images/icon-128x128.png"
+        "16": "icons/icon-16x16.png",
+        "32": "icons/icon-32x32.png",
+        "48": "icons/icon-48x48.png",
+        "128": "icons/icon-128x128.png"
     },
     "devtools_page": "devtools.html",
     "options_page": "pages/options/index.html",
