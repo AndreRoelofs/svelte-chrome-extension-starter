@@ -14,11 +14,14 @@
             ],
             "@svelte-chrome-extension-starter/ui-styles": [
                 "libs/libs/ui-styles/src/index.ts"
+            ],
+            "@svelte-chrome-extension-starter/utils": [
+                "libs/utils/src/index.ts"
             ]
         },
         "allowJs": false,
         "allowSyntheticDefaultImports": true,
-        "composite": true,
+        "composite": false,
         "declaration": true,
         "declarationMap": true,
         "emitDeclarationOnly": true,
@@ -43,7 +46,7 @@
         "skipDefaultLibCheck": false,
         "skipLibCheck": true,
         "sourceMap": false,
-        "strict": true,
+        "strict": false,
         "target": "ES2015",
         "verbatimModuleSyntax": false
     },

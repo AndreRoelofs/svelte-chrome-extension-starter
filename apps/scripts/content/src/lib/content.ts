@@ -1,9 +1,9 @@
 // import TestButton from '$lib/components/TestButton.svelte';
-import { Button } from '$lib/mountable-components/button/index.js';
+// import { Button } from '$lib/mountable-components/button/index.js';
 // import '$lib/mountable-components/button/index.ts';
 // import YoutubePlayerCreator from 'youtube-player';
 // import { YouTubePlayer } from 'youtube-player/dist/types.js';
-import { mountIfExists } from '@svelte-chrome-extension-starter/utils';
+// import { mountIfExists } from '@svelte-chrome-extension-starter/utils';
 
 (() => {
     let youtubeLeftControls: HTMLElement;
@@ -52,12 +52,12 @@ import { mountIfExists } from '@svelte-chrome-extension-starter/utils';
         //     },
         // });
 
-        mountIfExists(Button, {
-            target: youtubeLeftControls,
-            props: {
-                text: 'Click Me!',
-            },
-        });
+        // mountIfExists(Button, {
+        //     target: youtubeLeftControls,
+        //     props: {
+        //         text: 'Click Me!',
+        //     },
+        // });
 
         // customElements.define(
         //     'tw-bookmark-button',
