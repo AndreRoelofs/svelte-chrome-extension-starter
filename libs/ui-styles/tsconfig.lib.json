@@ -3,7 +3,7 @@
     "compilerOptions": {
         "outDir": "../../dist/out-tsc",
         "types": ["svelte", "node", "vite/client"],
-        "moduleResolution": "node",
+        "moduleResolution": "NodeNext",
         "target": "es2017",
         "verbatimModuleSyntax": true,
         "isolatedModules": true,
