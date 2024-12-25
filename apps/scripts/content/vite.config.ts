@@ -63,7 +63,8 @@ export default defineConfig({
     },
     resolve: {
         alias: {
-            '$custom-elements': path.resolve('dist/libs/custom-elements'),
+            // '$custom-elements': path.resolve('dist/libs/custom-elements'),
+            '$custom-elements': path.resolve('libs/custom-elements'),
         },
     },
 });

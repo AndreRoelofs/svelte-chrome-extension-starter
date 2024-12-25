@@ -36,13 +36,14 @@ export default defineConfig({
                 shadowStyles: 'libs/ui-styles/src/styles/global.pcss',
             },
             output: {
-                chunkFileNames: 'chunks/[name]-[hash].js',
+                chunkFileNames: '[name].js',
                 entryFileNames: '[name].js',
-                assetFileNames: '[name][extname]',
+                assetFileNames: '[name].[ext]',
             },
         },
-        outDir: '../../../dist/libs/custom-elements/bookmark-button',
-        emptyOutDir: true,
+        // outDir: '../../../dist/libs/custom-elements/bookmark-button',
+        outDir: './dist',
+        emptyOutDir: false,
         reportCompressedSize: true,
         commonjsOptions: {
             transformMixedEsModules: true,

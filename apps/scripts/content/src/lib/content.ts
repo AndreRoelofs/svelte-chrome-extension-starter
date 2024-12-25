@@ -4,9 +4,11 @@
 // import YoutubePlayerCreator from 'youtube-player';
 // import { YouTubePlayer } from 'youtube-player/dist/types.js';
 // import { mountIfExists } from '@svelte-chrome-extension-starter/utils';
+// import '$custom-elements/bookmark-button';
+// import { BookmarkButton } from '$custom-elements/bookmark-button/src/index.js';
 import '@webcomponents/custom-elements';
-import '$custom-elements/bookmark-button/main.js';
-import * as bookmarkStyle from '$custom-elements/bookmark-button/style.css?inline';
+import '$custom-elements/bookmark-button/dist/main.js';
+// import * as bookmarkStyle from '$custom-elements/bookmark-button/style.css?inline';
 // import '$custom-elements/bookmark-button/Button.css';
 
 (() => {
@@ -81,10 +83,10 @@ import * as bookmarkStyle from '$custom-elements/bookmark-button/style.css?inlin
         // Give z-index so it's on top of everything
         // button.style.zIndex = '9999';
 
-        const sheet = new CSSStyleSheet();
-        sheet.replaceSync(bookmarkStyle.default);
+        // const sheet = new CSSStyleSheet();
+        // sheet.replaceSync(bookmarkStyle.default);
 
-        button.shadowRoot.adoptedStyleSheets = [sheet];
+        // button.shadowRoot.adoptedStyleSheets = [sheet];
 
         youtubeLeftControls.append(button);
 

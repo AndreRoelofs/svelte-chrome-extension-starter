@@ -12,7 +12,7 @@
             ],
             "defaultConfiguration": "production",
             "options": {
-                "outputPath": "dist/libs/custom-elements/bookmark-button"
+                "outputPath": "libs/custom-elements/bookmark-button/dist"
             },
             "configurations": {
                 "development": {

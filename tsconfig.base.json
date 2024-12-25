@@ -6,7 +6,8 @@
         "paths": {
             "$lib": ["libs/ui-styles/src/ui"],
             "$lib/*": ["libs/ui-styles/src/ui/*"],
-            "$custom-elements/*": ["dist/libs/custom-elements/*"],
+            // "$custom-elements/*": ["dist/libs/custom-elements/*"],
+            "$custom-elements/*": ["libs/custom-elements/*"],
             "@svelte-chrome-extension-starter/background": [
                 "apps/scripts/background/src/index.ts"
             ],
