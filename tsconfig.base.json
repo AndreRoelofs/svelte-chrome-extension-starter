@@ -6,8 +6,12 @@
         "paths": {
             "$lib": ["libs/ui-styles/src/ui"],
             "$lib/*": ["libs/ui-styles/src/ui/*"],
+            "$custom-elements/*": ["dist/libs/custom-elements/*"],
             "@svelte-chrome-extension-starter/background": [
                 "apps/scripts/background/src/index.ts"
+            ],
+            "@svelte-chrome-extension-starter/bookmark-button": [
+                "libs/libs/custom-elements/bookmark-button/src/index.ts"
             ],
             "@svelte-chrome-extension-starter/content": [
                 "apps/scripts/content/src/index.ts"

@@ -4,6 +4,9 @@
 // import YoutubePlayerCreator from 'youtube-player';
 // import { YouTubePlayer } from 'youtube-player/dist/types.js';
 // import { mountIfExists } from '@svelte-chrome-extension-starter/utils';
+import '@webcomponents/custom-elements';
+import '$custom-elements/bookmark-button/main.js';
+import '$custom-elements/bookmark-button/style.css';
 
 (() => {
     let youtubeLeftControls: HTMLElement;
@@ -38,7 +41,7 @@
 
         if (!youtubeLeftControls) {
             console.error('Could not find youtubeLeftControls');
-            return;
+            // return;
         }
         // Create a div and prepend it to the body
         // const div = document.createElement('div');
@@ -64,28 +67,22 @@
         //     Button as unknown as CustomElementConstructor,
         // );
         // ===============================
-        // const button = document.createElement('tw-bookmark-button');
-        // button.id = 'my-button';
+        const button = document.createElement('tws-bookmark-button');
+        console.log('Button created', button);
+        button.id = 'my-button';
 
-        // // Make the position absolute and put in the middle of the screen
-        // button.style.position = 'absolute';
-        // button.style.top = '50%';
-        // button.style.left = '50%';
+        // Make the position absolute and put in the middle of the screen
+        button.style.position = 'absolute';
+        button.style.top = '50%';
+        button.style.left = '50%';
 
-        // // Give z-index so it's on top of everything
-        // button.style.zIndex = '9999';
+        // Give z-index so it's on top of everything
+        button.style.zIndex = '9999';
 
-        // // Make the button bigger
-        // button.style.width = '100px';
-        // button.style.height = '100px';
+        const div = document.createElement('div');
+        div.appendChild(button);
 
-        // button.style.backgroundColor = 'red';
-
-        // // youtubeLeftControls.prepend(button);
-        // document.body.prepend(button);
-
-        // console.log('Button mounted');
-        // console.log(button);
+        document.body.append(div);
 
         // ===============================
 

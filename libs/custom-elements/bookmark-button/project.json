@@ -1,0 +1,37 @@
+{
+    "name": "bookmark-button",
+    "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "libs/custom-elements/bookmark-button/src",
+    "projectType": "library",
+    "tags": [],
+    "targets": {
+        "build": {
+            "executor": "@nx/vite:build",
+            "outputs": [
+                "{options.outputPath}"
+            ],
+            "defaultConfiguration": "production",
+            "options": {
+                "outputPath": "dist/libs/custom-elements/bookmark-button"
+            },
+            "configurations": {
+                "development": {
+                    "mode": "development"
+                },
+                "production": {
+                    "mode": "production"
+                }
+            }
+        },
+        "lint": {
+            "command": "eslint libs/custom-elements/bookmark-button/**/*.{ts,svelte,spec.ts}"
+        },
+        "check": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "svelte-check",
+                "cwd": "libs/custom-elements/bookmark-button"
+            }
+        }
+    }
+}

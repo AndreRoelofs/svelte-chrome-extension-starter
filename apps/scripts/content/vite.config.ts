@@ -61,4 +61,9 @@ export default defineConfig({
             provider: 'v8',
         },
     },
+    resolve: {
+        alias: {
+            '$custom-elements': path.resolve('dist/libs/custom-elements'),
+        },
+    },
 });
