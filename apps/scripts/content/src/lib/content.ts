@@ -6,7 +6,8 @@
 // import { mountIfExists } from '@svelte-chrome-extension-starter/utils';
 import '@webcomponents/custom-elements';
 import '$custom-elements/bookmark-button/main.js';
-import '$custom-elements/bookmark-button/style.css';
+import * as bookmarkStyle from '$custom-elements/bookmark-button/style.css?inline';
+// import '$custom-elements/bookmark-button/Button.css';
 
 (() => {
     let youtubeLeftControls: HTMLElement;
@@ -69,6 +70,7 @@ import '$custom-elements/bookmark-button/style.css';
         // ===============================
         const button = document.createElement('tws-bookmark-button');
         console.log('Button created', button);
+
         button.id = 'my-button';
 
         // Make the position absolute and put in the middle of the screen
@@ -78,6 +80,11 @@ import '$custom-elements/bookmark-button/style.css';
 
         // Give z-index so it's on top of everything
         button.style.zIndex = '9999';
+
+        const sheet = new CSSStyleSheet();
+        sheet.replaceSync(bookmarkStyle.default);
+
+        button.shadowRoot.adoptedStyleSheets = [sheet];
 
         const div = document.createElement('div');
         div.appendChild(button);
