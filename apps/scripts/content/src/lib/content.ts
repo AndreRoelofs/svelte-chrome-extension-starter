@@ -71,25 +71,27 @@ import * as bookmarkStyle from '$custom-elements/bookmark-button/style.css?inlin
         const button = document.createElement('tws-bookmark-button');
         console.log('Button created', button);
 
-        button.id = 'my-button';
+        // button.id = 'my-button';
 
         // Make the position absolute and put in the middle of the screen
-        button.style.position = 'absolute';
-        button.style.top = '50%';
-        button.style.left = '50%';
+        // button.style.position = 'absolute';
+        // button.style.top = '50%';
+        // button.style.left = '50%';
 
         // Give z-index so it's on top of everything
-        button.style.zIndex = '9999';
+        // button.style.zIndex = '9999';
 
         const sheet = new CSSStyleSheet();
         sheet.replaceSync(bookmarkStyle.default);
 
         button.shadowRoot.adoptedStyleSheets = [sheet];
 
-        const div = document.createElement('div');
-        div.appendChild(button);
+        youtubeLeftControls.append(button);
 
-        document.body.append(div);
+        // const div = document.createElement('div');
+        // div.appendChild(button);
+
+        // document.body.append(div);
 
         // ===============================
 
