@@ -39,5 +39,6 @@ let { text = 'Hello World!' } = $props();
 <style lang="postcss">
 :host {
     display: flex;
+    font-size: 16px;
 }
 </style>
