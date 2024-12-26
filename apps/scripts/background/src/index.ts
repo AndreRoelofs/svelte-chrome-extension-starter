@@ -1,1 +1,1 @@
-export * from './lib/background.ts';
+import './lib/background.ts';
