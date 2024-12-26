@@ -1,10 +1,11 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const parentConfig = require('../postcss.config.cjs');
+
 module.exports = {
-    plugins: {
-        'postcss-import': {},
-        // 'tailwindcss/nesting': {},
-        tailwindcss: {
-            config: './tailwind.config.cjs',
-        },
-        autoprefixer: {},
-    },
+    ...parentConfig,
+    plugins: [
+        ...parentConfig.plugins,
+        // eslint-disable-next-line @typescript-eslint/no-var-requires
+        require('tailwindcss')('./tailwind.config.cjs'),
+    ],
 };

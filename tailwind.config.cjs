@@ -1,4 +1,5 @@
 import { fontFamily } from 'tailwindcss/defaultTheme';
+const plugin = require('tailwindcss/plugin');
 
 /** @type {import('tailwindcss').Config}*/
 const config = {
@@ -99,6 +100,16 @@ const config = {
     },
 
     plugins: [
+        plugin(function ({ addVariant }) {
+            addVariant('em', ({ container }) => {
+                container.walkRules((rule) => {
+                    rule.selector = `.em\\:${rule.selector.slice(1)}`;
+                    rule.walkDecls((decl) => {
+                        decl.value = decl.value.replace('rem', 'em');
+                    });
+                });
+            });
+        }),
         require('tailwindcss-animate'),
         require('@tailwindcss/typography'),
         require('@tailwindcss/forms'),

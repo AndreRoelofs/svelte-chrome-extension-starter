@@ -2,7 +2,6 @@ import { defineConfig } from 'vite';
 import { svelte } from '@sveltejs/vite-plugin-svelte';
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 import { nxCopyAssetsPlugin } from '@nx/vite/plugins/nx-copy-assets.plugin';
-
 import path from 'path';
 
 export default defineConfig({
@@ -30,18 +29,33 @@ export default defineConfig({
     //  plugins: [ nxViteTsPaths() ],
     // },
     build: {
-        outDir: '../../../dist/libs/custom-elements/bookmark-button',
-        emptyOutDir: true,
+        rollupOptions: {
+            input: {
+                main: path.resolve(__dirname, 'src/index.ts'),
+                // shadowStyles: path.resolve(__dirname, 'src/Button.pcss'),
+                shadowStyles: 'libs/ui-styles/src/styles/global.pcss',
+            },
+            output: {
+                chunkFileNames: '[name].js',
+                entryFileNames: '[name].js',
+                assetFileNames: '[name].[ext]',
+            },
+        },
+        // outDir: '../../../dist/libs/custom-elements/bookmark-button',
+        outDir: './dist',
+        emptyOutDir: false,
         reportCompressedSize: true,
         commonjsOptions: {
             transformMixedEsModules: true,
         },
         lib: {
-            entry: 'src/Button.svelte',
+            // entry: 'src/Button.svelte',
+            entry: 'src/index.ts',
             formats: ['es'],
             name: 'BookmarkButton',
             fileName: 'main',
         },
+        // cssCodeSplit: true,
     },
     test: {
         watch: false,
@@ -58,6 +72,7 @@ export default defineConfig({
     resolve: {
         alias: {
             $lib: path.resolve('libs/ui-styles/src/ui'),
+            $shared: path.resolve('libs/shared/src/index.ts'),
         },
     },
 });

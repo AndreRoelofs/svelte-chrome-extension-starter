@@ -1,0 +1,6 @@
+{
+    "name": "@svelte-chrome-extension-starter/shared",
+    "version": "0.0.1",
+    "dependencies": {},
+    "private": true
+}

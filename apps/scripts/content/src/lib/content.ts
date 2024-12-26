@@ -4,9 +4,12 @@
 // import YoutubePlayerCreator from 'youtube-player';
 // import { YouTubePlayer } from 'youtube-player/dist/types.js';
 // import { mountIfExists } from '@svelte-chrome-extension-starter/utils';
+// import '$custom-elements/bookmark-button';
+// import { BookmarkButton } from '$custom-elements/bookmark-button/src/index.js';
 import '@webcomponents/custom-elements';
-import '$custom-elements/bookmark-button/main.js';
-import '$custom-elements/bookmark-button/style.css';
+import '$custom-elements/bookmark-button/dist/main.js';
+// import * as bookmarkStyle from '$custom-elements/bookmark-button/style.css?inline';
+// import '$custom-elements/bookmark-button/Button.css';
 
 (() => {
     let youtubeLeftControls: HTMLElement;
@@ -69,20 +72,29 @@ import '$custom-elements/bookmark-button/style.css';
         // ===============================
         const button = document.createElement('tws-bookmark-button');
         console.log('Button created', button);
-        button.id = 'my-button';
+        button['text'] = 'Bookmark';
+
+        // button.id = 'my-button';
 
         // Make the position absolute and put in the middle of the screen
-        button.style.position = 'absolute';
-        button.style.top = '50%';
-        button.style.left = '50%';
+        // button.style.position = 'absolute';
+        // button.style.top = '50%';
+        // button.style.left = '50%';
 
         // Give z-index so it's on top of everything
-        button.style.zIndex = '9999';
+        // button.style.zIndex = '9999';
 
-        const div = document.createElement('div');
-        div.appendChild(button);
+        // const sheet = new CSSStyleSheet();
+        // sheet.replaceSync(bookmarkStyle.default);
 
-        document.body.append(div);
+        // button.shadowRoot.adoptedStyleSheets = [sheet];
+
+        youtubeLeftControls.append(button);
+
+        // const div = document.createElement('div');
+        // div.appendChild(button);
+
+        // document.body.append(div);
 
         // ===============================
 

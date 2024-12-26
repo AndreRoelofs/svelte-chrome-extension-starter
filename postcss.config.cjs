@@ -1,10 +1,8 @@
 module.exports = {
-    plugins: {
-        'postcss-import': {},
-        // 'tailwindcss/nesting': {},
-        tailwindcss: {
-            config: './tailwind.config.cjs',
-        },
-        autoprefixer: {},
-    },
+    plugins: [
+        require('postcss-import'),
+        // eslint-disable-next-line @typescript-eslint/no-var-requires
+        require('tailwindcss')('./tailwind.config.cjs'),
+        require('autoprefixer'),
+    ],
 };
