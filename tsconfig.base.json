@@ -4,10 +4,9 @@
         "rootDir": ".",
         "baseUrl": ".",
         "paths": {
+            "$custom-elements/*": ["libs/custom-elements/*"],
             "$lib": ["libs/ui-styles/src/ui"],
             "$lib/*": ["libs/ui-styles/src/ui/*"],
-            // "$custom-elements/*": ["dist/libs/custom-elements/*"],
-            "$custom-elements/*": ["libs/custom-elements/*"],
             "@svelte-chrome-extension-starter/background": [
                 "apps/scripts/background/src/index.ts"
             ],
@@ -17,6 +16,7 @@
             "@svelte-chrome-extension-starter/content": [
                 "apps/scripts/content/src/index.ts"
             ],
+            "$shared": ["libs/shared/src/index.ts"],
             "@svelte-chrome-extension-starter/ui-styles": [
                 "libs/libs/ui-styles/src/index.ts"
             ],

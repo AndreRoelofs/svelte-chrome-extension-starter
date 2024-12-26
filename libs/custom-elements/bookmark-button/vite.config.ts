@@ -72,6 +72,7 @@ export default defineConfig({
     resolve: {
         alias: {
             $lib: path.resolve('libs/ui-styles/src/ui'),
+            $shared: path.resolve('libs/shared/src/index.ts'),
         },
     },
 });
