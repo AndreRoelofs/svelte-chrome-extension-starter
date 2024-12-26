@@ -53,6 +53,9 @@ export default defineConfig({
     resolve: {
         alias: {
             $lib: path.resolve('libs/ui-styles/src/ui'),
+            '@svelte-chrome-extension-starter/utils': path.resolve(
+                'libs/utils/src/index.ts',
+            ),
         },
     },
 });

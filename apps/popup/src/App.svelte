@@ -1,29 +1,109 @@
 <script>
+import * as utils from '@svelte-chrome-extension-starter/utils';
 import { onMount } from 'svelte';
 import * as Table from '$lib/components/table';
 import { Button } from '$lib/components/button';
 import Snippet from './Snippet.svelte';
 
-function testFunction() {
-    console.log('testFunction');
-    console.log(chrome);
-    chrome.storage.sync.set({ key: 'value' }, function () {
-        console.log('Value is set to ' + 'value');
-    });
-}
-testFunction();
+const addNewBookmark = (bookmarks, bookmark) => {
+    const bookmarkTitleElement = document.createElement('div');
+    const controlsElement = document.createElement('div');
+    const newBookmarkElement = document.createElement('div');
 
-// Measure time to mount
-const start = performance.now();
+    bookmarkTitleElement.textContent = bookmark.desc;
+    bookmarkTitleElement.className = 'bookmark-title';
+    controlsElement.className = 'bookmark-controls';
 
-onMount(() => {
-    const end = performance.now();
-    console.log(`Mount time: ${end - start}ms`);
-    console.log('onMount');
-    chrome.storage.sync.get(['key'], function (result) {
-        console.log('Value currently is ' + result.key);
+    setBookmarkAttributes('play', onPlay, controlsElement);
+    setBookmarkAttributes('delete', onDelete, controlsElement);
+
+    newBookmarkElement.id = 'bookmark-' + bookmark.time;
+    newBookmarkElement.className = 'bookmark';
+    newBookmarkElement.setAttribute('timestamp', bookmark.time);
+
+    newBookmarkElement.appendChild(bookmarkTitleElement);
+    newBookmarkElement.appendChild(controlsElement);
+    bookmarks.appendChild(newBookmarkElement);
+};
+
+const viewBookmarks = (currentBookmarks = []) => {
+    const bookmarksElement = document.getElementById('bookmarks');
+    bookmarksElement.innerHTML = '';
+
+    if (currentBookmarks.length > 0) {
+        for (let i = 0; i < currentBookmarks.length; i++) {
+            const bookmark = currentBookmarks[i];
+            addNewBookmark(bookmarksElement, bookmark);
+        }
+    } else {
+        bookmarksElement.innerHTML = '<i class="row">No bookmarks to show</i>';
+    }
+
+    return;
+};
+
+const onPlay = async (e) => {
+    const bookmarkTime =
+        e.target.parentNode.parentNode.getAttribute('timestamp');
+    const activeTab = await getActiveTabURL();
+
+    chrome.tabs.sendMessage(activeTab.id, {
+        type: 'PLAY',
+        value: bookmarkTime,
     });
-});
+};
+
+const onDelete = async (e) => {
+    const activeTab = await getActiveTabURL();
+    const bookmarkTime =
+        e.target.parentNode.parentNode.getAttribute('timestamp');
+    const bookmarkElementToDelete = document.getElementById(
+        'bookmark-' + bookmarkTime,
+    );
+
+    bookmarkElementToDelete.parentNode.removeChild(bookmarkElementToDelete);
+
+    chrome.tabs.sendMessage(
+        activeTab.id,
+        {
+            type: 'DELETE',
+            value: bookmarkTime,
+        },
+        viewBookmarks,
+    );
+};
+
+const setBookmarkAttributes = (src, eventListener, controlParentElement) => {
+    const controlElement = document.createElement('img');
+
+    controlElement.src = 'assets/' + src + '.png';
+    controlElement.title = src;
+    controlElement.addEventListener('click', eventListener);
+    controlParentElement.appendChild(controlElement);
+};
+
+// onMount(async () => {
+//     const activeTab = await getActiveTabURL();
+//     const queryParameters = activeTab.url.split('?')[1];
+//     const urlParameters = new URLSearchParams(queryParameters);
+
+//     const currentVideo = urlParameters.get('v');
+
+//     if (activeTab.url.includes('youtube.com/watch') && currentVideo) {
+//         chrome.storage.sync.get([currentVideo], (data) => {
+//             const currentVideoBookmarks = data[currentVideo]
+//                 ? JSON.parse(data[currentVideo])
+//                 : [];
+
+//             viewBookmarks(currentVideoBookmarks);
+//         });
+//     } else {
+//         const container = document.getElementsByClassName('container')[0];
+
+//         container.innerHTML =
+//             '<div class="title">This is not a youtube video page.</div>';
+//     }
+// });
 
 const bookmarks = [
     { title: 'Video 1', timestamp: '5:49', date: '2024/12/22' },
@@ -32,10 +112,6 @@ const bookmarks = [
 ];
 </script>
 
-<!-- 
-<main
-    class="flex h-screen flex-col items-center justify-center bg-gray-100 text-center"
-> -->
 <main class="bg-background">
     <article class="prose lg:prose-xl">
         <h1>The Bookmarker</h1>
