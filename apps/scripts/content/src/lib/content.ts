@@ -3,7 +3,6 @@ import '$custom-elements/bookmark-button/dist/main.js';
 
 (() => {
     let youtubeLeftControls: HTMLElement;
-    // let youtubePlayer: YouTubePlayer;
     let youtubePlayer: HTMLVideoElement;
     let currentVideo = '';
     let currentVideoBookmarks = [];
