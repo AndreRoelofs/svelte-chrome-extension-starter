@@ -72,6 +72,7 @@ import '$custom-elements/bookmark-button/dist/main.js';
         // ===============================
         const button = document.createElement('tws-bookmark-button');
         console.log('Button created', button);
+        button['text'] = 'Bookmark';
 
         // button.id = 'my-button';
 
