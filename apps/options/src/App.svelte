@@ -93,6 +93,23 @@ let theme = 'default';
             >
         </Card.Header>
         <Card.Content>
+            <Switch id="theme" />
+            {#if theme === 'default'}
+                <Label for="theme">Default</Label>
+            {:else}
+                <Label for="theme">Dark</Label>
+            {/if}
+        </Card.Content>
+    </Card.Root>
+    <br />
+    <Card.Root class="mx-auto w-[350px]">
+        <Card.Header>
+            <Card.Title>Bookmark Button Style</Card.Title>
+            <Card.Description
+                >Choose the variant of the injected bookmark button</Card.Description
+            >
+        </Card.Header>
+        <Card.Content>
             <RadioGroup.Root value="comfortable" name="spacing">
                 <div class="flex items-center space-x-2">
                     <RadioGroup.Item value="default" id="r1" />
@@ -107,23 +124,6 @@ let theme = 'default';
                     <Label for="r3">Outline</Label>
                 </div>
             </RadioGroup.Root>
-        </Card.Content>
-    </Card.Root>
-    <br />
-    <Card.Root class="mx-auto w-[350px]">
-        <Card.Header>
-            <Card.Title>Bookmark Button Style</Card.Title>
-            <Card.Description
-                >Choose the variant of the injected bookmark button</Card.Description
-            >
-        </Card.Header>
-        <Card.Content>
-            <Switch id="theme" />
-            {#if theme === 'default'}
-                <Label for="theme">Default</Label>
-            {:else}
-                <Label for="theme">Dark</Label>
-            {/if}
         </Card.Content>
     </Card.Root>
 </main>
