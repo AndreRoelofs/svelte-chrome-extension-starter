@@ -68,8 +68,6 @@ const getDateWithTime = (t) => {
         day: 'numeric',
         hour: 'numeric',
         minute: 'numeric',
-        // second: 'numeric',
-        // timeZoneName: 'short',
     };
     const formattedDate = date.toLocaleString('en-US', options);
 
