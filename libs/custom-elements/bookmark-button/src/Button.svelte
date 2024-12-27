@@ -21,7 +21,7 @@
 
 <script lang="ts" module>
 import { unsafeCSS } from 'lit';
-import * as style from '../../../ui-styles/src/styles/global.pcss?inline';
+import * as style from '../../../ui-styles/src/styles/global.shadow.pcss?inline';
 const compiledTW = unsafeCSS(style.default);
 const sheet = new CSSStyleSheet();
 sheet.replaceSync(compiledTW.cssText);
@@ -35,7 +35,7 @@ import { Button } from '$lib/components/button';
 let { text = 'Hello World!' } = $props();
 </script>
 
-<Button variant="destructive" class="my-auto">
+<Button variant="default" class="my-auto">
     <Bookmark />
     {text}
 </Button>
@@ -44,6 +44,5 @@ let { text = 'Hello World!' } = $props();
 <style lang="postcss">
 :host {
     display: flex;
-    font-size: 16px;
 }
 </style>
