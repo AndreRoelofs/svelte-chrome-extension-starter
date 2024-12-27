@@ -11,7 +11,7 @@
                 "apps/scripts/background/src/index.ts"
             ],
             "@svelte-chrome-extension-starter/bookmark-button": [
-                "libs/libs/custom-elements/bookmark-button/src/index.ts"
+                "libs/custom-elements/bookmark-button/src/index.ts"
             ],
             "@svelte-chrome-extension-starter/content": [
                 "apps/scripts/content/src/index.ts"

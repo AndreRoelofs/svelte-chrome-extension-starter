@@ -1,10 +1,12 @@
 import '@webcomponents/custom-elements';
-import '$custom-elements/bookmark-button/dist/main.js';
+// import '$custom-elements/bookmark-button/dist/main.js';
+import { BookmarkButton } from '@svelte-chrome-extension-starter/bookmark-button';
 // import { LitElement, unsafeCSS } from 'lit';
 //
 // import * as testStyle from '../../../../../libs/ui-styles/src/styles/global.pcss?inline';
 
 (() => {
+    console.log(BookmarkButton);
     // const testTailwindElement = unsafeCSS(testStyle.default);
 
     // console.log('testTailwindElement', testTailwindElement);

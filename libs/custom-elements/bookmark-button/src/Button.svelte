@@ -25,6 +25,8 @@ import * as style from '../../../ui-styles/src/styles/global.pcss?inline';
 const compiledTW = unsafeCSS(style.default);
 const sheet = new CSSStyleSheet();
 sheet.replaceSync(compiledTW.cssText);
+
+// Export default custom element
 </script>
 
 <script lang="ts">
