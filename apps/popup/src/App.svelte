@@ -5,7 +5,6 @@ import * as Table from '$lib/components/table';
 import { Button } from '$lib/components/button';
 import Play from 'lucide-svelte/icons/play';
 import Trash from 'lucide-svelte/icons/trash';
-import { on } from 'events';
 
 let bookmarks = [];
 
