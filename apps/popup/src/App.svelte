@@ -18,11 +18,9 @@ const fetchBookmarks = async () => {
 
     if (activeTab.url.includes('youtube.com/watch') && currentVideo) {
         chrome.storage.sync.get([currentVideo], (data) => {
-            console.log('retrieved data', data);
             bookmarks = data[currentVideo]
                 ? JSON.parse(data[currentVideo])
                 : [];
-            console.log('bookmarks', bookmarks);
         });
     } else {
         bookmarks = [];
@@ -45,19 +43,10 @@ const onDelete = async (timestamp) => {
         (bookmark) => bookmark.timestamp !== timestamp,
     );
 
-    // chrome.storage.sync.set({ [activeTab.url]: JSON.stringify(bookmarks) });
-
     chrome.tabs.sendMessage(activeTab.id, {
         type: 'DELETE',
         value: timestamp,
     });
-};
-
-const getTime = (t) => {
-    const date = new Date(0);
-    date.setSeconds(t);
-
-    return date.toISOString().substring(11, 19);
 };
 
 const getDateWithTime = (t) => {

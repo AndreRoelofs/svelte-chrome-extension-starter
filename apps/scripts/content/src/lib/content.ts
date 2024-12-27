@@ -2,6 +2,11 @@ import '@webcomponents/custom-elements';
 import '@svelte-chrome-extension-starter/bookmark-button';
 
 (() => {
+    // if (window['hasTWSExtension']) {
+    //     window['hasTWSExtension'] = true;
+    //     return;
+    // }
+
     let youtubeLeftControls: HTMLElement;
     let youtubePlayer: HTMLVideoElement;
     let currentVideo = '';
@@ -35,12 +40,12 @@ import '@svelte-chrome-extension-starter/bookmark-button';
             // desc: 'Bookmark at ' + getTime(currentTime),
         };
 
-        currentVideoBookmarks = (await fetchBookmarks()) as [];
+        currentVideoBookmarks = (await fetchBookmarks()) as unknown[];
 
         chrome.storage.sync.set({
             [currentVideo]: JSON.stringify(
                 [...currentVideoBookmarks, newBookmark].sort(
-                    (a, b) => a.time - b.time,
+                    (a, b) => a.timestamp - b.timestamp,
                 ),
             ),
         });
@@ -51,7 +56,7 @@ import '@svelte-chrome-extension-starter/bookmark-button';
             'tws-bookmark-button',
         );
 
-        currentVideoBookmarks = (await fetchBookmarks()) as [];
+        currentVideoBookmarks = (await fetchBookmarks()) as unknown[];
 
         if (bookmarkButtonExists) {
             return;
@@ -64,6 +69,11 @@ import '@svelte-chrome-extension-starter/bookmark-button';
         youtubePlayer = document.getElementsByClassName(
             'video-stream',
         )[0] as HTMLVideoElement;
+
+        if (!youtubeLeftControls || !youtubePlayer) {
+            console.error('Could not find youtube player');
+            return;
+        }
 
         const button = document.createElement('tws-bookmark-button');
         console.log('Button created', button);
@@ -78,14 +88,16 @@ import '@svelte-chrome-extension-starter/bookmark-button';
         console.log('Received message', obj);
         const { type, value, videoId } = obj;
 
+        // currentVideoBookmarks = (await fetchBookmarks()) as unknown[];
+
         if (type === 'NEW') {
             currentVideo = videoId;
-            console.log(currentVideo);
             newVideoLoaded();
         } else if (type === 'PLAY') {
             console.log('playing', value);
             youtubePlayer.currentTime = value;
         } else if (type === 'DELETE') {
+            console.log(currentVideoBookmarks);
             currentVideoBookmarks = currentVideoBookmarks.filter(
                 (b) => b.timestamp != value,
             );
@@ -93,9 +105,14 @@ import '@svelte-chrome-extension-starter/bookmark-button';
                 [currentVideo]: JSON.stringify(currentVideoBookmarks),
             });
 
+            fetchBookmarks().then((bookmarks: []) => {
+                currentVideoBookmarks = bookmarks;
+            });
+
             response(currentVideoBookmarks);
         }
     });
 
-    document.addEventListener('DOMContentLoaded', newVideoLoaded);
+    // document.addEventListener('DOMContentLoaded', newVideoLoaded);
+    newVideoLoaded();
 })();
