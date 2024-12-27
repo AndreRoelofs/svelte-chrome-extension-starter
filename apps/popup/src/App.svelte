@@ -16,9 +16,11 @@ const fetchBookmarks = async () => {
 
     if (activeTab.url.includes('youtube.com/watch') && currentVideo) {
         chrome.storage.sync.get([currentVideo], (data) => {
+            console.log('retrieved data', data);
             bookmarks = data[currentVideo]
                 ? JSON.parse(data[currentVideo])
                 : [];
+            console.log('bookmarks', bookmarks);
         });
     } else {
         bookmarks = [];

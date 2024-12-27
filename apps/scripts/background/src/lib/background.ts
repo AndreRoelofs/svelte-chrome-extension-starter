@@ -9,5 +9,3 @@ chrome.tabs.onUpdated.addListener((tabId, tab) => {
         });
     }
 });
-
-console.log('Background Script Svelte Loaded');
