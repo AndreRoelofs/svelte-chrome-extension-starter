@@ -18,6 +18,7 @@ const fetchBookmarks = async () => {
     for (const key in data) {
         const bookmarkObject = JSON.parse(data[key]);
         newBookmarks.push({
+            id: key,
             name: bookmarkObject[0].title,
             items: [...bookmarkObject],
         });
@@ -27,13 +28,11 @@ const fetchBookmarks = async () => {
 
     console.log('pop-up bookmarks', bookmarks);
 };
-const onPlay = async (timestamp) => {
-    const activeTab = await utils.getActiveTabURL();
+const onPlay = async (videoId, timestamp) => {
+    const videoURL = `https://www.youtube.com/watch?v=${videoId}&t=${Math.round(timestamp)}`;
 
-    chrome.tabs.sendMessage(activeTab.id, {
-        type: 'PLAY',
-        value: timestamp,
-    });
+    // Open the video in a new tab
+    chrome.tabs.create({ url: videoURL });
 };
 
 const onDelete = async (timestamp) => {
@@ -80,7 +79,7 @@ onMount(fetchBookmarks);
         <p>All your bookmarks</p>
 
         {#if bookmarks.length > 0}
-            {#each bookmarks as { name, items }}
+            {#each bookmarks as { id, name, items }}
                 <Table.Root>
                     <Table.Caption>{name}</Table.Caption>
                     <Table.Header>
@@ -102,8 +101,11 @@ onMount(fetchBookmarks);
                                 <Table.Cell class="text-right">
                                     <Button
                                         size="icon"
-                                        onclick={onPlay.bind(null, timestamp)}
-                                        ><Play /></Button
+                                        onclick={onPlay.bind(
+                                            null,
+                                            id,
+                                            timestamp,
+                                        )}><Play /></Button
                                     >
 
                                     <Button
