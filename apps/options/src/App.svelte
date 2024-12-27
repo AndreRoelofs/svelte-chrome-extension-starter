@@ -10,6 +10,8 @@ import * as RadioGroup from '$lib/components/radio-group';
 import { Label } from '$lib/components/label';
 import '../../../libs/ui-styles/src/styles/global.pcss';
 
+import { Switch } from '$lib/components/switch';
+
 let bookmarks = [];
 
 const fetchBookmarks = async () => {
@@ -73,6 +75,8 @@ const getDateWithTime = (t) => {
 };
 
 onMount(fetchBookmarks);
+
+let theme = 'default';
 </script>
 
 <main>
@@ -83,9 +87,9 @@ onMount(fetchBookmarks);
     <br />
     <Card.Root class="mx-auto w-[350px]">
         <Card.Header>
-            <Card.Title>Bookmark Button Style</Card.Title>
+            <Card.Title>Theme</Card.Title>
             <Card.Description
-                >Choose the variant of the injected bookmark button</Card.Description
+                >Choose the theme of the whole application</Card.Description
             >
         </Card.Header>
         <Card.Content>
@@ -105,6 +109,23 @@ onMount(fetchBookmarks);
             </RadioGroup.Root>
         </Card.Content>
     </Card.Root>
+    <br />
+    <Card.Root class="mx-auto w-[350px]">
+        <Card.Header>
+            <Card.Title>Bookmark Button Style</Card.Title>
+            <Card.Description
+                >Choose the variant of the injected bookmark button</Card.Description
+            >
+        </Card.Header>
+        <Card.Content>
+            <Switch id="theme" />
+            {#if theme === 'default'}
+                <Label for="theme">Default</Label>
+            {:else}
+                <Label for="theme">Dark</Label>
+            {/if}
+        </Card.Content>
+    </Card.Root>
 </main>
 
 <style lang="postcss">
@@ -119,9 +140,5 @@ main {
     main {
         max-width: none;
     }
-}
-
-html {
-    font-size: 16px;
 }
 </style>
