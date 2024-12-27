@@ -21,6 +21,7 @@ const fetchBookmarks = async () => {
             bookmarks = data[currentVideo]
                 ? JSON.parse(data[currentVideo])
                 : [];
+            console.log('pop-up bookmarks', bookmarks);
         });
     } else {
         bookmarks = [];
@@ -47,6 +48,13 @@ const onDelete = async (timestamp) => {
         type: 'DELETE',
         value: timestamp,
     });
+};
+
+const getTime = (t) => {
+    const date = new Date(0);
+    date.setSeconds(t);
+
+    return date.toISOString().substring(11, 19);
 };
 
 const getDateWithTime = (t) => {
@@ -85,14 +93,11 @@ onMount(fetchBookmarks);
                 </Table.Row>
             </Table.Header>
             <Table.Body>
-                <!-- {#each bookmarks as { time, desc }} -->
                 {#each bookmarks as { timestamp, title, createdAt }}
                     <Table.Row>
                         <Table.Cell class="font-medium">{title}</Table.Cell>
+                        <Table.Cell>{getTime(timestamp)}</Table.Cell>
                         <!-- <Table.Cell>{timestamp}</Table.Cell> -->
-                        <!-- <Table.Cell>{getTime(timestamp)}</Table.Cell> -->
-                        <Table.Cell>{timestamp}</Table.Cell>
-                        <!-- <Table.Cell>{createdAt}</Table.Cell> -->
                         <Table.Cell>{getDateWithTime(createdAt)}</Table.Cell>
                         <Table.Cell class="text-right">
                             <Button

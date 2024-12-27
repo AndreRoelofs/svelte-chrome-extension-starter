@@ -27,7 +27,6 @@ import '@svelte-chrome-extension-starter/bookmark-button';
         }
 
         const currentTime = youtubePlayer.currentTime;
-        // Get the title of the video
         const title = document.querySelector(
             'yt-formatted-string.style-scope.ytd-watch-metadata',
         ) as HTMLElement;
@@ -36,19 +35,16 @@ import '@svelte-chrome-extension-starter/bookmark-button';
             timestamp: currentTime,
             createdAt: new Date().toISOString(),
             title: title.innerText,
-            // time: currentTime,
-            // desc: 'Bookmark at ' + getTime(currentTime),
         };
 
-        currentVideoBookmarks = (await fetchBookmarks()) as unknown[];
-
-        chrome.storage.sync.set({
+        await chrome.storage.sync.set({
             [currentVideo]: JSON.stringify(
                 [...currentVideoBookmarks, newBookmark].sort(
                     (a, b) => a.timestamp - b.timestamp,
                 ),
             ),
         });
+        currentVideoBookmarks = (await fetchBookmarks()) as unknown[];
     };
 
     const newVideoLoaded = async () => {
@@ -90,6 +86,12 @@ import '@svelte-chrome-extension-starter/bookmark-button';
 
         // currentVideoBookmarks = (await fetchBookmarks()) as unknown[];
 
+        // fetchBookmarks().then((bookmarks: []) => {
+        //     console.log('Bookmarks', bookmarks);
+        // });
+
+        // currentVideoBookmarks = (await fetchBookmarks()) as unknown[];
+
         if (type === 'NEW') {
             currentVideo = videoId;
             newVideoLoaded();
@@ -110,7 +112,11 @@ import '@svelte-chrome-extension-starter/bookmark-button';
             });
 
             response(currentVideoBookmarks);
+            return;
         }
+        response();
+        // return true;
+        // response();
     });
 
     // document.addEventListener('DOMContentLoaded', newVideoLoaded);
