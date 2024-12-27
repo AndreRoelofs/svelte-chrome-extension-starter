@@ -5,7 +5,7 @@ import parentConfig from '../../tailwind.config.js';
 /** @type {import('tailwindcss').Config} */
 const config = merge({}, parentConfig, {
     content: [
-        './libs/custom-elements/bookmark-button/**/*.{html,js,svelte,ts}',
+        'libs/custom-elements/bookmark-button/src/**/*.{html,js,svelte,ts}',
     ],
 });
 
