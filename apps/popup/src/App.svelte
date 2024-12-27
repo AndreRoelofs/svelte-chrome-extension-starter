@@ -3,7 +3,9 @@ import * as utils from '@svelte-chrome-extension-starter/utils';
 import { onMount } from 'svelte';
 import * as Table from '$lib/components/table';
 import { Button } from '$lib/components/button';
-import Snippet from './Snippet.svelte';
+// import Snippet from './Snippet.svelte';
+import Play from 'lucide-svelte/icons/play';
+import Trash from 'lucide-svelte/icons/trash';
 
 let bookmarks = [];
 
@@ -79,11 +81,15 @@ onMount(fetchBookmarks);
                         <Table.Cell>{timestamp}</Table.Cell>
                         <Table.Cell>{createdAt}</Table.Cell>
                         <Table.Cell class="text-right">
-                            <Button on:click={() => onPlay(timestamp)}
-                                >Play</Button
+                            <Button
+                                size="icon"
+                                on:click={() => onPlay(timestamp)}
+                                ><Play /></Button
                             >
-                            <Button on:click={() => onDelete(timestamp)}
-                                >Delete</Button
+                            <Button
+                                size="icon"
+                                on:click={() => onDelete(timestamp)}
+                                ><Trash /></Button
                             >
                         </Table.Cell>
                     </Table.Row>
