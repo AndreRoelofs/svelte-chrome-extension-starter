@@ -3,7 +3,6 @@ import * as utils from '@svelte-chrome-extension-starter/utils';
 import { onMount } from 'svelte';
 import * as Table from '$lib/components/table';
 import { Button } from '$lib/components/button';
-// import Snippet from './Snippet.svelte';
 import Play from 'lucide-svelte/icons/play';
 import Trash from 'lucide-svelte/icons/trash';
 
@@ -53,6 +52,30 @@ const onDelete = async (timestamp) => {
     });
 };
 
+const getTime = (t) => {
+    const date = new Date(0);
+    date.setSeconds(t);
+
+    return date.toISOString().substring(11, 19);
+};
+
+const getDateWithTime = (t) => {
+    const date = new Date(t);
+
+    const options = {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: 'numeric',
+        // second: 'numeric',
+        // timeZoneName: 'short',
+    };
+    const formattedDate = date.toLocaleString('en-US', options);
+
+    return formattedDate;
+};
+
 onMount(fetchBookmarks);
 </script>
 
@@ -69,7 +92,7 @@ onMount(fetchBookmarks);
                 <Table.Row>
                     <Table.Head class="w-[100px]">Title</Table.Head>
                     <Table.Head>Timestamp</Table.Head>
-                    <Table.Head>Date</Table.Head>
+                    <Table.Head>Created At</Table.Head>
                     <Table.Head class="text-right">Actions</Table.Head>
                 </Table.Row>
             </Table.Header>
@@ -78,8 +101,10 @@ onMount(fetchBookmarks);
                 {#each bookmarks as { timestamp, title, createdAt }}
                     <Table.Row>
                         <Table.Cell class="font-medium">{title}</Table.Cell>
-                        <Table.Cell>{timestamp}</Table.Cell>
-                        <Table.Cell>{createdAt}</Table.Cell>
+                        <!-- <Table.Cell>{timestamp}</Table.Cell> -->
+                        <Table.Cell>{getTime(timestamp)}</Table.Cell>
+                        <!-- <Table.Cell>{createdAt}</Table.Cell> -->
+                        <Table.Cell>{getDateWithTime(createdAt)}</Table.Cell>
                         <Table.Cell class="text-right">
                             <Button
                                 size="icon"

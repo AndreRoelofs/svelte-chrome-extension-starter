@@ -91,12 +91,5 @@ import '@svelte-chrome-extension-starter/bookmark-button';
         }
     });
 
-    const getTime = (t) => {
-        const date = new Date(0);
-        date.setSeconds(t);
-
-        return date.toISOString().substring(11, 8);
-    };
-
     newVideoLoaded();
 })();
