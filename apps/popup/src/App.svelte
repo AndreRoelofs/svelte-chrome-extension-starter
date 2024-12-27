@@ -5,6 +5,7 @@ import * as Table from '$lib/components/table';
 import { Button } from '$lib/components/button';
 import Play from 'lucide-svelte/icons/play';
 import Trash from 'lucide-svelte/icons/trash';
+import { on } from 'events';
 
 let bookmarks = [];
 
@@ -44,7 +45,7 @@ const onDelete = async (timestamp) => {
         (bookmark) => bookmark.timestamp !== timestamp,
     );
 
-    chrome.storage.sync.set({ [activeTab.url]: JSON.stringify(bookmarks) });
+    // chrome.storage.sync.set({ [activeTab.url]: JSON.stringify(bookmarks) });
 
     chrome.tabs.sendMessage(activeTab.id, {
         type: 'DELETE',
@@ -100,18 +101,20 @@ onMount(fetchBookmarks);
                     <Table.Row>
                         <Table.Cell class="font-medium">{title}</Table.Cell>
                         <!-- <Table.Cell>{timestamp}</Table.Cell> -->
-                        <Table.Cell>{getTime(timestamp)}</Table.Cell>
+                        <!-- <Table.Cell>{getTime(timestamp)}</Table.Cell> -->
+                        <Table.Cell>{timestamp}</Table.Cell>
                         <!-- <Table.Cell>{createdAt}</Table.Cell> -->
                         <Table.Cell>{getDateWithTime(createdAt)}</Table.Cell>
                         <Table.Cell class="text-right">
                             <Button
                                 size="icon"
-                                on:click={() => onPlay(timestamp)}
+                                onclick={onPlay.bind(null, timestamp)}
                                 ><Play /></Button
                             >
+
                             <Button
                                 size="icon"
-                                on:click={() => onDelete(timestamp)}
+                                onclick={onDelete.bind(null, timestamp)}
                                 ><Trash /></Button
                             >
                         </Table.Cell>
