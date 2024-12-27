@@ -3,8 +3,12 @@ import * as utils from '@svelte-chrome-extension-starter/utils';
 import { onMount } from 'svelte';
 import * as Table from '$lib/components/table';
 import { Button } from '$lib/components/button';
+import * as Card from '$lib/components/card';
 import Play from 'lucide-svelte/icons/play';
 import Trash from 'lucide-svelte/icons/trash';
+import * as RadioGroup from '$lib/components/radio-group';
+import { Label } from '$lib/components/label';
+import '../../../libs/ui-styles/src/styles/global.pcss';
 
 let bookmarks = [];
 
@@ -71,62 +75,40 @@ const getDateWithTime = (t) => {
 onMount(fetchBookmarks);
 </script>
 
-<main class="bg-background">
-    <article class="prose lg:prose-xl">
+<main>
+    <article class="prose text-center lg:prose-xl">
         <h1>The Bookmarker</h1>
-        <p>All your bookmarks</p>
-
-        {#if bookmarks.length > 0}
-            {#each bookmarks as { id, name, items }}
-                <Table.Root>
-                    <Table.Caption>{name}</Table.Caption>
-                    <Table.Header>
-                        <Table.Row>
-                            <Table.Head class="w-[100px]">Timestamp</Table.Head>
-                            <Table.Head class="w-[250px] text-center"
-                                >Created At</Table.Head
-                            >
-                            <Table.Head class="text-right">Actions</Table.Head>
-                        </Table.Row>
-                    </Table.Header>
-                    <Table.Body>
-                        {#each items as { timestamp, title, createdAt }}
-                            <Table.Row>
-                                <Table.Cell>{getTime(timestamp)}</Table.Cell>
-                                <Table.Cell
-                                    >{getDateWithTime(createdAt)}</Table.Cell
-                                >
-                                <Table.Cell class="text-right">
-                                    <Button
-                                        size="icon"
-                                        onclick={onPlay.bind(
-                                            null,
-                                            id,
-                                            timestamp,
-                                        )}><Play /></Button
-                                    >
-
-                                    <Button
-                                        size="icon"
-                                        onclick={onDelete.bind(null, timestamp)}
-                                        ><Trash /></Button
-                                    >
-                                </Table.Cell>
-                            </Table.Row>
-                        {/each}
-                    </Table.Body>
-                </Table.Root>
-                <br />
-            {/each}
-        {:else}
-            <p>No bookmarks to show.</p>
-        {/if}
+        <p>Select your settings</p>
     </article>
+    <br />
+    <Card.Root class="mx-auto w-[350px]">
+        <Card.Header>
+            <Card.Title>Bookmark Button Style</Card.Title>
+            <Card.Description
+                >Choose the variant of the injected bookmark button</Card.Description
+            >
+        </Card.Header>
+        <Card.Content>
+            <RadioGroup.Root value="comfortable" name="spacing">
+                <div class="flex items-center space-x-2">
+                    <RadioGroup.Item value="default" id="r1" />
+                    <Label for="r1">Default</Label>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <RadioGroup.Item value="comfortable" id="r2" />
+                    <Label for="r2">Destructive</Label>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <RadioGroup.Item value="compact" id="r3" />
+                    <Label for="r3">Outline</Label>
+                </div>
+            </RadioGroup.Root>
+        </Card.Content>
+    </Card.Root>
 </main>
 
 <style lang="postcss">
 main {
-    text-align: center;
     padding: 1em;
     max-width: 700px;
     margin: 0 auto;
@@ -137,5 +119,9 @@ main {
     main {
         max-width: none;
     }
+}
+
+html {
+    font-size: 16px;
 }
 </style>
