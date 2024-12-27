@@ -81,7 +81,7 @@ let theme = 'default';
 
 <main>
     <article class="prose text-center lg:prose-xl">
-        <h1>The Bookmarker</h1>
+        <h1>Styles</h1>
         <p>Select your settings</p>
     </article>
     <br />
