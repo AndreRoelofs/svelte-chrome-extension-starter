@@ -9,7 +9,7 @@
     },
     "content_scripts": [
         {
-            "all_frames": false,
+            "all_frames": true,
             "js": [
                 "scripts/content/main.js"
             ],
