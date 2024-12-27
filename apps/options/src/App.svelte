@@ -25,8 +25,6 @@ const fetchBookmarks = async () => {
     }
 
     bookmarks = newBookmarks;
-
-    console.log('pop-up bookmarks', bookmarks);
 };
 const onPlay = async (videoId, timestamp) => {
     const videoURL = `https://www.youtube.com/watch?v=${videoId}&t=${Math.round(timestamp)}`;
