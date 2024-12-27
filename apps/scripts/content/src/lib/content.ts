@@ -1,7 +1,14 @@
 import '@webcomponents/custom-elements';
 import '$custom-elements/bookmark-button/dist/main.js';
+// import { LitElement, unsafeCSS } from 'lit';
+//
+// import * as testStyle from '../../../../../libs/ui-styles/src/styles/global.pcss?inline';
 
 (() => {
+    // const testTailwindElement = unsafeCSS(testStyle.default);
+
+    // console.log('testTailwindElement', testTailwindElement);
+    //
     let youtubeLeftControls: HTMLElement;
     let youtubePlayer: HTMLVideoElement;
     let currentVideo = '';

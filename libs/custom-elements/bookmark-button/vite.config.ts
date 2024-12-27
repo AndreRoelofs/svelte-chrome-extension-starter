@@ -33,7 +33,7 @@ export default defineConfig({
             input: {
                 main: path.resolve(__dirname, 'src/index.ts'),
                 // shadowStyles: path.resolve(__dirname, 'src/Button.pcss'),
-                shadowStyles: 'libs/ui-styles/src/styles/global.pcss',
+                // shadowStyles: 'libs/ui-styles/src/styles/global.pcss',
             },
             output: {
                 chunkFileNames: '[name].js',

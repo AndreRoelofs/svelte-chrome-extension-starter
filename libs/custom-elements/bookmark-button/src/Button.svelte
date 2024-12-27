@@ -12,6 +12,7 @@
                     super();
 
                     this.shadowRoot.adoptedStyleSheets = [sheet];
+                    // adoptStyles(this.shadowRoot, testTailwindElement);
                 }
             };
         },
@@ -19,9 +20,11 @@
 />
 
 <script lang="ts" module>
-import * as style from '../dist/style.css?inline';
+import { unsafeCSS } from 'lit';
+import * as style from '../../../ui-styles/src/styles/global.pcss?inline';
+const compiledTW = unsafeCSS(style.default);
 const sheet = new CSSStyleSheet();
-sheet.replaceSync(style.default);
+sheet.replaceSync(compiledTW.cssText);
 </script>
 
 <script lang="ts">
