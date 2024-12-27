@@ -17,9 +17,17 @@ import '@svelte-chrome-extension-starter/bookmark-button';
 
     const addNewBookmarkEventHandler = async () => {
         const currentTime = youtubePlayer.currentTime;
+        // Get the title of the video
+        const title = document.querySelector(
+            'yt-formatted-string.style-scope.ytd-watch-metadata',
+        ) as HTMLElement;
+
         const newBookmark = {
-            time: currentTime,
-            desc: 'Bookmark at ' + getTime(currentTime),
+            timestamp: currentTime,
+            createdAt: new Date().toISOString(),
+            title: title.innerText,
+            // time: currentTime,
+            // desc: 'Bookmark at ' + getTime(currentTime),
         };
 
         currentVideoBookmarks = (await fetchBookmarks()) as [];

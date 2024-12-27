@@ -72,11 +72,12 @@ onMount(fetchBookmarks);
                 </Table.Row>
             </Table.Header>
             <Table.Body>
-                {#each bookmarks as { time, desc }}
+                <!-- {#each bookmarks as { time, desc }} -->
+                {#each bookmarks as { timestamp, title, createdAt }}
                     <Table.Row>
-                        <Table.Cell class="font-medium">{desc}</Table.Cell>
-                        <Table.Cell>{time}</Table.Cell>
-                        <Table.Cell>TestDate</Table.Cell>
+                        <Table.Cell class="font-medium">{title}</Table.Cell>
+                        <Table.Cell>{timestamp}</Table.Cell>
+                        <Table.Cell>{createdAt}</Table.Cell>
                         <Table.Cell class="text-right">
                             <Button on:click={() => onPlay(timestamp)}
                                 >Play</Button
