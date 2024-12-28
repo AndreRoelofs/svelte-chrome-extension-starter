@@ -19,3 +19,6 @@ dist
 extension/pages/*
 extension/scripts/*
 node_modules
+
+.github/*
+.husky/*
