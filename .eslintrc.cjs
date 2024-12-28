@@ -29,7 +29,7 @@ module.exports = {
             },
         },
     ],
-    ignores: [
+    ignorePatterns: [
         'node_modules',
         '.DS_Store',
         '/build',
