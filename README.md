@@ -57,6 +57,8 @@ The purpose of this project is to create an efficient Svelte Monorepo structure 
 
 ✅ Commitizen
 
+✅ Dark Mode
+
 ## 🎯 Prerequisites
 
 - [Node.js](https://nodejs.org) (>= 20 required)
