@@ -24,3 +24,6 @@ node_modules
 .husky/*
 
 README.md
+
+tsconfig.json
+tsconfig.*.json

@@ -2,7 +2,7 @@
     "extends": "./tsconfig.json",
     "compilerOptions": {
         "outDir": "../../../dist/out-tsc",
-        "types": ["svelte", "node", "vite/client"],
+        "types": ["svelte", "node", "vite/client", "chrome"],
         "moduleResolution": "NodeNext",
         "target": "es2017",
         "verbatimModuleSyntax": true,

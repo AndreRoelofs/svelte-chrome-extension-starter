@@ -1,9 +1,10 @@
 import { fontFamily } from 'tailwindcss/defaultTheme';
-// eslint-disable-next-line @typescript-eslint/no-var-requires
+// eslint-disable-next-line @typescript-eslint/no-var-requires, @typescript-eslint/no-require-imports
 const plugin = require('tailwindcss/plugin');
 
 /** @type {import('tailwindcss').Config}*/
 const config = {
+    // darkMode: 'selector',
     content: [
         './apps/**/*.{html,js,svelte,ts}',
         './libs/**/*.{html,js,svelte,ts}',

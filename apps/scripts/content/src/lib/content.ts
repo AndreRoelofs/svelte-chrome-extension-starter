@@ -81,25 +81,14 @@ import '@svelte-chrome-extension-starter/bookmark-button';
     };
 
     chrome.runtime.onMessage.addListener((obj, _, response) => {
-        console.log('Received message', obj);
         const { type, value, videoId } = obj;
-
-        // currentVideoBookmarks = (await fetchBookmarks()) as unknown[];
-
-        // fetchBookmarks().then((bookmarks: []) => {
-        //     console.log('Bookmarks', bookmarks);
-        // });
-
-        // currentVideoBookmarks = (await fetchBookmarks()) as unknown[];
 
         if (type === 'NEW') {
             currentVideo = videoId;
             newVideoLoaded();
         } else if (type === 'PLAY') {
-            console.log('playing', value);
             youtubePlayer.currentTime = value;
         } else if (type === 'DELETE') {
-            console.log(currentVideoBookmarks);
             currentVideoBookmarks = currentVideoBookmarks.filter(
                 (b) => b.timestamp != value,
             );
