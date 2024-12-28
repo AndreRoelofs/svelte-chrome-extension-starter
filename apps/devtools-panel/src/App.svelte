@@ -10,7 +10,6 @@ let bookmarks = [];
 
 const fetchBookmarks = async () => {
     const keys = await chrome.storage.sync.getKeys();
-    console.log(keys);
 
     const newBookmarks = [];
 
@@ -90,7 +89,7 @@ onMount(fetchBookmarks);
                         </Table.Row>
                     </Table.Header>
                     <Table.Body>
-                        {#each items as { timestamp, title, createdAt }}
+                        {#each items as { timestamp, createdAt }}
                             <Table.Row>
                                 <Table.Cell>{getTime(timestamp)}</Table.Cell>
                                 <Table.Cell

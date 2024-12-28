@@ -1,80 +1,10 @@
 <script>
-import * as utils from '@svelte-chrome-extension-starter/utils';
-import { onMount } from 'svelte';
-import * as Table from '$lib/components/table';
-import { Button } from '$lib/components/button';
 import * as Card from '$lib/components/card';
-import Play from 'lucide-svelte/icons/play';
-import Trash from 'lucide-svelte/icons/trash';
 import * as RadioGroup from '$lib/components/radio-group';
 import { Label } from '$lib/components/label';
 import '../../../libs/ui-styles/src/styles/global.pcss';
 
 import { Switch } from '$lib/components/switch';
-
-let bookmarks = [];
-
-const fetchBookmarks = async () => {
-    const keys = await chrome.storage.sync.getKeys();
-    console.log(keys);
-
-    const newBookmarks = [];
-
-    const data = await chrome.storage.sync.get(keys);
-    for (const key in data) {
-        const bookmarkObject = JSON.parse(data[key]);
-        newBookmarks.push({
-            id: key,
-            name: bookmarkObject[0].title,
-            items: [...bookmarkObject],
-        });
-    }
-
-    bookmarks = newBookmarks;
-};
-const onPlay = async (videoId, timestamp) => {
-    const videoURL = `https://www.youtube.com/watch?v=${videoId}&t=${Math.round(timestamp)}`;
-
-    // Open the video in a new tab
-    chrome.tabs.create({ url: videoURL });
-};
-
-const onDelete = async (timestamp) => {
-    const activeTab = await utils.getActiveTabURL();
-
-    bookmarks = bookmarks.filter(
-        (bookmark) => bookmark.timestamp !== timestamp,
-    );
-
-    chrome.tabs.sendMessage(activeTab.id, {
-        type: 'DELETE',
-        value: timestamp,
-    });
-};
-
-const getTime = (t) => {
-    const date = new Date(0);
-    date.setSeconds(t);
-
-    return date.toISOString().substring(11, 19);
-};
-
-const getDateWithTime = (t) => {
-    const date = new Date(t);
-
-    const options = {
-        year: 'numeric',
-        month: 'short',
-        day: 'numeric',
-        hour: 'numeric',
-        minute: 'numeric',
-    };
-    const formattedDate = date.toLocaleString('en-US', options);
-
-    return formattedDate;
-};
-
-onMount(fetchBookmarks);
 
 let theme = 'default';
 </script>
