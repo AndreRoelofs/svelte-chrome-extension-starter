@@ -50,4 +50,9 @@ export default defineConfig({
             provider: 'v8',
         },
     },
+    resolve: {
+        alias: {
+            $lib: path.resolve('libs/ui-styles/src/ui'),
+        },
+    },
 });

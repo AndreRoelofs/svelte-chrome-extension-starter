@@ -4,7 +4,7 @@ import { svelte } from '@sveltejs/vite-plugin-svelte';
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 import { nxCopyAssetsPlugin } from '@nx/vite/plugins/nx-copy-assets.plugin';
 
-import { join } from 'path';
+import path from 'path';
 
 export default defineConfig({
     base: './',
@@ -25,7 +25,7 @@ export default defineConfig({
     // },
     build: {
         // outDir: '../../dist/apps/devtools-panel',
-        outDir: join(__dirname, '../../extension/pages/devtools-panel'),
+        outDir: path.join(__dirname, '../../extension/pages/devtools-panel'),
         emptyOutDir: true,
         reportCompressedSize: true,
         commonjsOptions: {
@@ -41,6 +41,12 @@ export default defineConfig({
         coverage: {
             reportsDirectory: '../../coverage/apps/devtools-panel',
             provider: 'v8',
+        },
+    },
+    resolve: {
+        alias: {
+            // $lib: join(__dirname, 'libs/ui-styles/src/ui'),
+            $lib: path.resolve('libs/ui-styles/src/ui'),
         },
     },
 });
