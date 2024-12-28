@@ -29,23 +29,4 @@ module.exports = {
             },
         },
     ],
-    ignorePatterns: [
-        'node_modules',
-        '.DS_Store',
-        '/build',
-        '/.svelte-kit',
-        '/package',
-        '.env',
-        '!.env.example',
-
-        // Ignore files for PNPM, NPM and YARN
-        'pnpm-lock.yaml',
-        'package-lock.json',
-        'yarn.lock',
-
-        '.nx',
-        'dist',
-        'extension/pages/*',
-        'extension/scripts/*',
-    ],
 };
