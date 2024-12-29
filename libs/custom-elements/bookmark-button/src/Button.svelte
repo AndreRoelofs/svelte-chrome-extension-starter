@@ -10,10 +10,6 @@
             return class extends customElementConstructor {
                 constructor() {
                     super();
-
-                    // Add dark class to the shadow root
-                    // this.shadowRoot.querySelector('slot').classList.add('dark');
-
                     this.shadowRoot.adoptedStyleSheets = [sheet];
                 }
             };
@@ -23,7 +19,7 @@
 
 <script lang="ts" module>
 import { unsafeCSS } from 'lit';
-import * as style from '../../../ui-styles/src/styles/global.shadow.pcss?inline';
+import * as style from '../../../ui-styles/src/styles/global.pcss?inline';
 const compiledTW = unsafeCSS(style.default);
 const sheet = new CSSStyleSheet();
 sheet.replaceSync(compiledTW.cssText);
@@ -40,22 +36,9 @@ chrome.storage.sync.get(['theme'], function (data) {
 </script>
 
 <script lang="ts">
-// import { onMount } from 'svelte';
 import Bookmark from 'lucide-svelte/icons/bookmark';
 import { Button } from '$lib/components/button/index.js';
 let { text = 'Hello World!' } = $props();
-
-// let theme = $state('default');
-
-// onMount(() => {
-//     chrome.storage.sync.getKeys((keys) => {
-//         console.log('Keys:', keys);
-//     });
-//     chrome.storage.sync.get(['theme'], function (data) {
-//         theme = data.theme || 'default';
-//         console.log('Value currently is ' + data.theme);
-//     });
-// });
 </script>
 
 <!-- Add conditional dark class to button -->
