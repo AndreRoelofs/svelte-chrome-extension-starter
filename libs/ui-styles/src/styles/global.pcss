@@ -3,7 +3,8 @@
 @tailwind utilities;
 
 @layer base {
-    :root {
+    :root,
+    :host > * {
         --background: 0 0% 100%;
         --foreground: 224 71.4% 4.1%;
         --muted: 220 14.3% 95.9%;
@@ -65,11 +66,14 @@
     }
 }
 @layer base {
-    * {
+    *,
+    :host > * {
         @apply border-border;
     }
 
-    body {
+    body,
+    :host > *,
+    :host {
         @apply bg-background text-foreground;
         font-size: 16px;
     }
